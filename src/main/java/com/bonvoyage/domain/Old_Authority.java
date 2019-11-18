@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity(name = "AUTHORITIES")
-public class Authority {
+public class Old_Authority {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

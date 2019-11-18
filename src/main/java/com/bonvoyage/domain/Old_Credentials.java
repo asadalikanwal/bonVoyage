@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
 
  
 @Entity(name = "USERS")
-public class Credentials {
+public class Old_Credentials {
 
 	 @Id
 	 @Column(name = "username", nullable = false, unique = true)
@@ -26,7 +26,7 @@ public class Credentials {
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name="username", referencedColumnName= "username") 
-	List<Authority> authority;
+	List<Old_Authority> authority;
 	
  	public String getUsername() {
 		return username;
@@ -52,10 +52,10 @@ public class Credentials {
 	public void setEnabled(Boolean enabled) {
 		this.enabled = enabled;
 	}
-	public List<Authority> getAuthority() {
+	public List<Old_Authority> getAuthority() {
 		return authority;
 	}
-	public void setAuthority(List<Authority> authority) {
+	public void setAuthority(List<Old_Authority> authority) {
 		this.authority = authority;
 	}
 	

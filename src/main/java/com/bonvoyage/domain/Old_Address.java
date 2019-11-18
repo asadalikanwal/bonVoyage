@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity(name="address")
-public class Address {
+public class Old_Address {
 
     @Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
