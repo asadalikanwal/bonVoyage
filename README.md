@@ -1,2 +1,2 @@
 # bonVoyage
-## Hve a nice trip!
+### Have a nice trip!
