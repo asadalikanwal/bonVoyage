@@ -1,7 +1,7 @@
- 
+
 DROP TABLE IF EXISTS EMPLOYEE;
 
-create table employee( ID int primary key AUTO_INCREMENT NOT NULL, 
+create table employee( ID int primary key AUTO_INCREMENT NOT NULL,
 						firstName varchar(25),
 						lastName varchar(25),
 						age BIGINT,
