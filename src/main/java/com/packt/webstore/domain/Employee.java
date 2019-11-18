@@ -1,4 +1,4 @@
-package com.packt.webstore.domain;
+package com.bonvoyage.domain;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;

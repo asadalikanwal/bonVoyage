@@ -1,4 +1,4 @@
-package com.packt.webstore.controller;
+package com.bonvoyage.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.packt.webstore.domain.Credentials;
+import com.bonvoyage.domain.Credentials;
 
 @Controller
 public class LoginController {

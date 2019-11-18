@@ -1,4 +1,4 @@
-package com.packt.webstore;
+package com.bonvoyage;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletRegistration;

@@ -1,10 +1,10 @@
-package com.packt.webstore;
+package com.bonvoyage;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan("com.packt.webstore.service.impl")
+@ComponentScan("com.bonvoyage.service.impl")
 public class Service {
    
      

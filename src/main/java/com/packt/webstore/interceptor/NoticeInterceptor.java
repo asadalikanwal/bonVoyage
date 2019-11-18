@@ -1,4 +1,4 @@
-package com.packt.webstore.interceptor;
+package com.bonvoyage.interceptor;
 
 import java.security.Principal;
 

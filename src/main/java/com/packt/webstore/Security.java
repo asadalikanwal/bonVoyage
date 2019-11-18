@@ -1,4 +1,4 @@
-package com.packt.webstore;
+package com.bonvoyage;
 
 import javax.sql.DataSource;
 

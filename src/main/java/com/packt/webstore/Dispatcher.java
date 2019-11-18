@@ -1,4 +1,4 @@
-package com.packt.webstore;
+package com.bonvoyage;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -12,11 +12,11 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-import com.packt.webstore.interceptor.NoticeInterceptor;
+import com.bonvoyage.interceptor.NoticeInterceptor;
  
 @EnableWebMvc
 @Configuration
-@ComponentScan(basePackages = { "com.packt.webstore.controller" })
+@ComponentScan(basePackages = { "com.bonvoyage.controller" })
 @PropertySource(value="classpath:application.properties")
 public class Dispatcher extends WebMvcConfigurerAdapter {
  

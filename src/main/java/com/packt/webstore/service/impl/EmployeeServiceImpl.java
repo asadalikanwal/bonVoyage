@@ -1,15 +1,15 @@
-package com.packt.webstore.service.impl;
+package com.bonvoyage.service.impl;
 
 import java.util.List;
 
-import com.packt.webstore.repository.EmployeeRepository;
+import com.bonvoyage.repository.EmployeeRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.packt.webstore.domain.Employee;
-import com.packt.webstore.service.EmployeeService;
+import com.bonvoyage.domain.Employee;
+import com.bonvoyage.service.EmployeeService;
 
 @Service
 @Transactional 

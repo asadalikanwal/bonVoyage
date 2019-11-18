@@ -1,4 +1,4 @@
-package com.packt.webstore;
+package com.bonvoyage;
 
 import java.util.Properties;
 
@@ -19,8 +19,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan("com.packt.webstore.repository")
-@EnableJpaRepositories                      //("com.packt.webstore.repository")
+@ComponentScan("com.bonvoyage.repository")
+@EnableJpaRepositories                      //("com.bonvoyage.repository")
 @PropertySource(value="classpath:application.properties")
 public class Persistence {
 

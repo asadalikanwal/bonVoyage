@@ -1,8 +1,8 @@
-package com.packt.webstore.service;
+package com.bonvoyage.service;
 
 import java.util.List;
 
-import com.packt.webstore.domain.Employee;
+import com.bonvoyage.domain.Employee;
  
 public interface EmployeeService {
 
