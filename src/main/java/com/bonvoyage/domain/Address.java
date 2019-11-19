@@ -20,7 +20,7 @@ public class Address {
 
  	@Column(name="zip")
   	private String zipCode;
-	
+
 	public String getStreet() {
 		return street;
 	}
