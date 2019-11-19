@@ -6,6 +6,8 @@ import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.bonvoyage.validator.UniqueUsername;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -64,6 +66,7 @@ private Address address;
 
 @Column(name="Username", nullable = false, unique = true)
 @NotNull(message="{NotNull}")
+@UniqueUsername(message="{Unique.username}")
 @Size(min=8, max=20,message="{Size.range}")
 private String username;
 

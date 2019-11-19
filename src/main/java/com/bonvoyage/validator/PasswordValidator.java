@@ -19,7 +19,6 @@ public class PasswordValidator implements ConstraintValidator<Password, String> 
 	public void initialize(Password value) {}
 
 	/**
-	 * @param Responsible for enforcing business security rules
 	 * @return true if all security rules are met. false otherwise
 	 */
 	@SuppressWarnings("deprecation")
@@ -41,12 +40,9 @@ public class PasswordValidator implements ConstraintValidator<Password, String> 
 				hasDigits = true;
 			if (!(Character.isLetter(currentLetter) &&
 					Character.isDigit(currentLetter)) &&
-					Character.valueOf(currentLetter) < 128)
+					currentLetter < 128)
 				hasSpecialSigns = true;
 		}
-		if (hasLetters && hasDigits && hasSpecialSigns)
-			return true;
-		
-		return false;
+		return hasLetters && hasDigits && hasSpecialSigns;
 	}
 }

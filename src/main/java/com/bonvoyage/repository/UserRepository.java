@@ -13,8 +13,16 @@ import java.util.List;
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
 
-    String NON_APPROVED_USERS = "select u from User u where u.userRole = :role";
+    String USERS_BY_ROLE = "select u from User u where u.userRole = :role";
+    String COUNT_OF_USER_BY_USERNAME = "select count(u) from User u where u.username = :un";
+    String GET_USER_BY_USERNAME = "select u from User u where u.username = :un";
 
-    @Query(value = NON_APPROVED_USERS)
+    @Query(value = USERS_BY_ROLE)
     List<User> findUsersByRole(@Param("role") UserRole userRole);
+
+    @Query(value = COUNT_OF_USER_BY_USERNAME)
+    int countOfUsername(@Param("un") String username);
+
+    @Query(value = GET_USER_BY_USERNAME)
+    User findUserByUsername(@Param("un") String username);
 }

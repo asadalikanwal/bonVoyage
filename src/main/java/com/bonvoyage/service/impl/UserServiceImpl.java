@@ -16,7 +16,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserRepository userRepository;
     @Override
-    public User createUser(User user) {
+    public User saveUser(User user) {
         return userRepository.save(user);
     }
 
@@ -24,5 +24,14 @@ public class UserServiceImpl implements UserService {
     public List<User> findUsersByRole(UserRole userRole) {
         String role = userRole.toString();
         return userRepository.findUsersByRole(userRole);
+    }
+
+    @Override
+    public int countOfUsername(String username) {
+        return userRepository.countOfUsername(username);
+    }
+
+    public User findUserByUsername(String username) {
+        return userRepository.findUserByUsername(username);
     }
 }
