@@ -43,7 +43,6 @@ private String lastName;
 @Column(name="Birthdate")
 @NotNull(message="{NotNull}")
 @DateTimeFormat(pattern="MM/DD/YYYY")
-//@Past(message="{Date.past}") //Create custom validator (?) to make it check for 18 years
 @Age(min=18,message="{Age.min}")
 private LocalDate birthdate;
 
@@ -52,7 +51,7 @@ private LocalDate birthdate;
 private String email;
 
 	@Transient
-private MultipartFile photo; // add MultipartResolver to Dispatcher.java
+private MultipartFile photo;
 
 @Valid
 @OneToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)

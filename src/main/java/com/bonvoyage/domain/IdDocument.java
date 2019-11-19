@@ -39,5 +39,7 @@ private String documentNo;
 private LocalDate validThrough;
 
     @Transient
-private MultipartFile documentImage; // add MultipartResolver to Dispatcher.java
+private MultipartFile documentImage;
+
+
 }
