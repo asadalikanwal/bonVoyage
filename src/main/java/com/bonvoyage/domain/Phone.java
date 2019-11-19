@@ -5,29 +5,70 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.Range;
+
+/** Class to hold Phone data.
+	 * 
+	 * @author Aser Ahmad
+	 * @author aaahmad@mum.edu
+	 * @version 1.0
+	 * @since 1.0
+	 *
+	 */
 @Entity
 public class Phone {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "Id")
-    private Long id;
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="Id")
+	private Long id;
+	
+	@Column(name="Area")
+	@NotNull(message="{NotNull}")
+	@Range(min=100,max=999,message="{Digits.three}")
+	private int area;
+	
+	@Column(name="{Prefix}")
+	@NotNull(message="{NotNull}")
+	@Range(min=100,max=999,message="{Digits.three}")
+	private int prefix;
+	
+	@Column(name="Number")
+	@NotNull(message="{NotNull}")
+	@Range(min=1000,max=9999,message="{Digits.four}")
+	private int number;
 
-    @Column(name = "Area")
-    @NotNull(message = "{NotNull}")
-    @Digits(integer = 3, fraction = 0, message = "{Digits}")
-    private Integer area;
+	public Long getId() {
+		return id;
+	}
 
-    @Column(name = "{Prefix}")
-    @NotNull(message = "{NotNull}")
-    @Digits(integer = 3, fraction = 0, message = "{Digits}")
-    private Integer prefix;
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    @Column(name = "Number")
-    @NotNull(message = "{NotNull}")
-    @Digits(integer = 4, fraction = 0, message = "{Digits}")
-    private Integer number;
+	public int getArea() {
+		return area;
+	}
+
+	public void setArea(int area) {
+		this.area = area;
+	}
+
+	public int getPrefix() {
+		return prefix;
+	}
+
+	public void setPrefix(int prefix) {
+		this.prefix = prefix;
+	}
+
+	public int getNumber() {
+		return number;
+	}
+
+	public void setNumber(int number) {
+		this.number = number;
+	}
 }

@@ -6,12 +6,16 @@ import org.springframework.context.annotation.*;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
+import org.springframework.format.FormatterRegistry;
+import org.springframework.format.support.FormattingConversionServiceFactoryBean;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import com.bonvoyage.formatter.ZipCodeFormatter;
 import com.bonvoyage.interceptor.NoticeInterceptor;
  
 @EnableWebMvc
@@ -56,8 +60,6 @@ public class Dispatcher extends WebMvcConfigurerAdapter {
         return resource;
     }
  
-    
-  
     @Bean(name = "validator")
     public LocalValidatorFactoryBean validator() {
        LocalValidatorFactoryBean bean = new LocalValidatorFactoryBean();
@@ -78,7 +80,17 @@ public class Dispatcher extends WebMvcConfigurerAdapter {
        return validator();
     }
 
-   
+    @Bean
+    public MultipartResolver multipartResolver() {
+        CommonsMultipartResolver multipartResolver
+          = new CommonsMultipartResolver();
+        multipartResolver.setMaxUploadSize(1 * 1024 * 1024); //1 MB
+        return multipartResolver;
+    }
     
+    @Bean
+    public void addFormatters(FormatterRegistry registry) {
+        registry.addFormatter(new ZipCodeFormatter());
+    }
     
 }
