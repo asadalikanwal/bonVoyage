@@ -31,7 +31,7 @@ private Long Id;
 
 @Column(name="Document_Type")
 @NotNull(message="{NotNull}")
-private IdDocument documentType;
+private IdDocumentType documentType;
 
 @Column(name="Document_No")
 @NotNull(message="{NotNull}")

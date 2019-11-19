@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.util.Locale;
 
 import org.springframework.format.Formatter;
+import org.springframework.stereotype.Component;
 
 import com.bonvoyage.domain.ZipCode;
 
@@ -15,6 +16,8 @@ import com.bonvoyage.domain.ZipCode;
  * @since 1.0
  *
  */
+
+@Component
 public class ZipCodeFormatter implements Formatter<ZipCode>{
 
 	@Override

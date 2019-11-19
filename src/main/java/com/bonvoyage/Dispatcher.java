@@ -27,6 +27,9 @@ public class Dispatcher extends WebMvcConfigurerAdapter {
 	@Autowired 
 	Environment environment;
 	
+	@Autowired
+	ZipCodeFormatter zipCodeFormatter;
+	
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler(environment.getProperty("staticResourceAlias")).addResourceLocations(environment.getProperty("staticResourceLocation"));
@@ -80,9 +83,8 @@ public class Dispatcher extends WebMvcConfigurerAdapter {
         return multipartResolver;
     }
     
-    @Bean
     public void addFormatters(FormatterRegistry registry) {
-        registry.addFormatter(new ZipCodeFormatter());
+        registry.addFormatter(zipCodeFormatter);
     }
     
 }
