@@ -64,7 +64,15 @@ public class Dispatcher extends WebMvcConfigurerAdapter {
        bean.setValidationMessageSource(messageSource());
        return bean;
     }
-    
+
+    @Bean(name = "multipartResolver")
+    public CommonsMultipartResolver multipartResolver() {
+        CommonsMultipartResolver resolver = new CommonsMultipartResolver();
+        resolver.setDefaultEncoding("utf-8");
+        return resolver;
+    }
+
+
     @Override
     public Validator getValidator(){
        return validator();

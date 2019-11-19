@@ -2,15 +2,7 @@ package com.bonvoyage.domain;
 
 import java.time.LocalDate;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -19,9 +11,10 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.multipart.MultipartFile;
+
 
 import com.bonvoyage.validator.Password;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 public class User {
@@ -49,19 +42,18 @@ public class User {
     @Email(message = "{Email}")
     private String email;
 
-    @Column(name = "Photo")
-    @NotNull(message = "{NotNull}")
+    //    @Column(name = "Photo")
+//    @NotNull(message = "{NotNull}")
+    @Transient
     private MultipartFile photo; // add MultipartResolver to Dispatcher.java
 
     @Valid
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @Column(name = "Phone_Number")
     @JoinColumn(name = "Phone_Id")
     private Phone phoneNo;
 
     @Valid
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @Column(name = "Address")
     @JoinColumn(name = "Address_Id")
     private Address address;
 
