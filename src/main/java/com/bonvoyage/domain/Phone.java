@@ -30,7 +30,7 @@ public class Phone {
 	@Range(min=100,max=999,message="{Digits.three}")
 	private int area;
 	
-	@Column(name="{Prefix}")
+	@Column(name="Prefix")
 	@NotNull(message="{NotNull}")
 	@Range(min=100,max=999,message="{Digits.three}")
 	private int prefix;
