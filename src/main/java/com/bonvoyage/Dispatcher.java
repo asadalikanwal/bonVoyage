@@ -26,6 +26,7 @@ public class Dispatcher extends WebMvcConfigurerAdapter {
  
 	@Autowired 
 	Environment environment;
+
 	
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -80,16 +81,19 @@ public class Dispatcher extends WebMvcConfigurerAdapter {
        return validator();
     }
 
-    @Bean
-    public MultipartResolver multipartResolver() {
-        CommonsMultipartResolver multipartResolver
-          = new CommonsMultipartResolver();
-        multipartResolver.setMaxUploadSize(1 * 1024 * 1024); //1 MB
-        return multipartResolver;
-    }
-    
-    @Bean
+//    @Bean
+//    public MultipartResolver multipartResolver() {
+//        CommonsMultipartResolver multipartResolver
+//          = new CommonsMultipartResolver();
+//        multipartResolver.setMaxUploadSize(1 * 1024 * 1024); //1 MB
+//        return multipartResolver;
+//    }
+
+
+
+
     public void addFormatters(FormatterRegistry registry) {
+
         registry.addFormatter(new ZipCodeFormatter());
     }
     

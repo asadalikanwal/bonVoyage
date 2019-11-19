@@ -49,7 +49,6 @@ public class Address {
 	private String state;
 	
 	@Valid
-	@Column(name="Zip_Code")
 	@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	@JoinColumn(name="ZipCode_Id")
 	private ZipCode zipCode;
