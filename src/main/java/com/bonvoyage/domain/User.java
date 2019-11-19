@@ -77,6 +77,9 @@ private String password;
 @Column(name="Average_Rating")
 private double averageRating;
 
+@Column(name="No_of_Ratings")
+private long noOfRatings;
+
 @Column(name="User_Role")
 private UserRole userRole;
 
