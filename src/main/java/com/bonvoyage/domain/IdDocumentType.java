@@ -10,5 +10,5 @@ package com.bonvoyage.domain;
  */
 public enum IdDocumentType {
 
-	STATE_ID, DRIVER_LICENSE_OR_PERMIT, PASSPORT, SSN
+    State_Id, Driver_License_or_Permit, Passport, SSN
 }

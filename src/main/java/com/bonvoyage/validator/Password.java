@@ -21,11 +21,13 @@ import java.lang.annotation.RetentionPolicy;
  *
  */
 @Target({ElementType.METHOD, ElementType.FIELD, ElementType.ANNOTATION_TYPE})
-@Retention(value=RetentionPolicy.RUNTIME)
-@Constraint(validatedBy=PasswordValidator.class)
+@Retention(value = RetentionPolicy.RUNTIME)
+@Constraint(validatedBy = PasswordValidator.class)
 @Documented
 public @interface Password {
-	String message() default "{Password}";
-	Class<?>[] groups() default {};
-	public abstract Class <? extends Payload>[] payload() default{};
+    String message() default "{Password}";
+
+    Class<?>[] groups() default {};
+
+    public abstract Class<? extends Payload>[] payload() default {};
 }

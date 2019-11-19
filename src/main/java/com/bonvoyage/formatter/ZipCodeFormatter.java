@@ -7,6 +7,7 @@ import org.springframework.format.Formatter;
 import org.springframework.stereotype.Component;
 
 import com.bonvoyage.domain.ZipCode;
+import org.springframework.stereotype.Component;
 
 /** Custom zip code formatter built to make sure the user enters/receives a correct zip code.
  * 

@@ -1,17 +1,12 @@
 package com.bonvoyage.domain;
 
 import java.time.LocalDate;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
-
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 
 /** Class to hold Id document data.
  * 
@@ -43,7 +38,6 @@ private String documentNo;
 @Future(message="{Date.future}")
 private LocalDate validThrough;
 
-@Column(name="Document_Image")
-@NotNull(message="{NotNull}")
+    @Transient
 private MultipartFile documentImage; // add MultipartResolver to Dispatcher.java
 }

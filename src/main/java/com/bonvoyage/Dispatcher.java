@@ -26,9 +26,7 @@ public class Dispatcher extends WebMvcConfigurerAdapter {
  
 	@Autowired 
 	Environment environment;
-	
-	@Autowired
-	ZipCodeFormatter zipCodeFormatter;
+
 	
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -69,22 +67,34 @@ public class Dispatcher extends WebMvcConfigurerAdapter {
        bean.setValidationMessageSource(messageSource());
        return bean;
     }
-    
+
+    @Bean(name = "multipartResolver")
+    public CommonsMultipartResolver multipartResolver() {
+        CommonsMultipartResolver resolver = new CommonsMultipartResolver();
+        resolver.setDefaultEncoding("utf-8");
+        return resolver;
+    }
+
+
     @Override
     public Validator getValidator(){
        return validator();
     }
 
-    @Bean
-    public MultipartResolver multipartResolver() {
-        CommonsMultipartResolver multipartResolver
-          = new CommonsMultipartResolver();
-        multipartResolver.setMaxUploadSize(1 * 1024 * 1024); //1 MB
-        return multipartResolver;
-    }
-    
+//    @Bean
+//    public MultipartResolver multipartResolver() {
+//        CommonsMultipartResolver multipartResolver
+//          = new CommonsMultipartResolver();
+//        multipartResolver.setMaxUploadSize(1 * 1024 * 1024); //1 MB
+//        return multipartResolver;
+//    }
+
+
+
+
     public void addFormatters(FormatterRegistry registry) {
-        registry.addFormatter(zipCodeFormatter);
+
+        registry.addFormatter(new ZipCodeFormatter());
     }
     
 }
