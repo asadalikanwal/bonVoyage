@@ -44,5 +44,53 @@ public class Address {
 	@Column(name="Zip_Code")
 	@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	@JoinColumn(name="ZipCode_Id")
-	private String zipCode;
+	private ZipCode zipCode;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getDoor() {
+		return door;
+	}
+
+	public void setDoor(String door) {
+		this.door = door;
+	}
+
+	public String getStreet() {
+		return street;
+	}
+
+	public void setStreet(String street) {
+		this.street = street;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public ZipCode getZipCode() {
+		return zipCode;
+	}
+
+	public void setZipCode(ZipCode zipCode) {
+		this.zipCode = zipCode;
+	}
 }

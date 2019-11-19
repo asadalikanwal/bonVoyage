@@ -25,7 +25,6 @@ public class PasswordValidator implements ConstraintValidator<Password, String> 
 	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isValid(String value, ConstraintValidatorContext context) {
-		 // Check that there is at least one digit, one letter, one special sign
 		boolean hasDigits = false;
 		boolean hasLetters = false;
 		boolean hasSpecialSigns = false;
@@ -35,6 +34,7 @@ public class PasswordValidator implements ConstraintValidator<Password, String> 
 			if(Character.isSpace(currentLetter))
 				return false;
 			
+			// Check that there is at least one digit, one letter, one special sign
 			if (Character.isLetter(currentLetter))
 				hasLetters=true;
 			if (Character.isDigit(currentLetter))
@@ -46,7 +46,7 @@ public class PasswordValidator implements ConstraintValidator<Password, String> 
 		}
 		if (hasLetters && hasDigits && hasSpecialSigns)
 			return true;
+		
 		return false;
 	}
-
 }
