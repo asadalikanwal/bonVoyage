@@ -62,10 +62,13 @@ public class Security extends WebSecurityConfigurerAdapter
             in the order they are configured below.   
  			(anyRequest()) should always be at the bottom of the list.     
          */
+        /**
+         * @author Aser Ahmad (customization of controllers)
+         */
            .authorizeRequests()
                 .antMatchers( "/login**" ).permitAll()
-                .antMatchers( "/employees/add" ).hasRole( "ADMIN" )
-                .antMatchers( "/employees" ).hasAnyRole( "ADMIN","USER" )
+                .antMatchers( "/users/add" ).hasRole( "ADMIN" )
+                .antMatchers( "/users" ).hasAnyRole( "ADMIN","USER","DRIVER")
                 .anyRequest().permitAll()
              .and()
             
