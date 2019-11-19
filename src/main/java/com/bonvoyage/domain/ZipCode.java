@@ -10,6 +10,14 @@ import javax.validation.constraints.Digits;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Range;
 
+/** Class to hold zip code.
+ * 
+ * @author Aser Ahmad
+ * @author aaahmad@mum.edu
+ * @version 1.0
+ * @since 1.0
+ *
+ */
 @Entity
 public class ZipCode {
 

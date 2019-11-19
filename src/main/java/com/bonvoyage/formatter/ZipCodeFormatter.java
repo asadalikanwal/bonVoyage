@@ -7,6 +7,14 @@ import org.springframework.format.Formatter;
 
 import com.bonvoyage.domain.ZipCode;
 
+/** Custom zip code formatter built to make sure the user enters/receives a correct zip code.
+ * 
+ * @author Aser Ahmad
+ * @author aaahmad@mum.edu
+ * @version 1.0
+ * @since 1.0
+ *
+ */
 public class ZipCodeFormatter implements Formatter<ZipCode>{
 
 	@Override

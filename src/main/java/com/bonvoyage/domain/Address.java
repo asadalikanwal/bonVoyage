@@ -14,6 +14,14 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+/** Class to hold address data.
+ * 
+ * @author Aser Ahmad
+ * @author aaahmad@mum.edu
+ * @version 1.0
+ * @since 1.0
+ *
+ */
 @Entity
 public class Address {
 

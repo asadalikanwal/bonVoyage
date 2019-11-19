@@ -13,6 +13,14 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
+/** Class to hold Id document data.
+ * 
+ * @author Aser Ahmad
+ * @author aaahmad@mum.edu
+ * @version 1.0
+ * @since 1.0
+ *
+ */
 @Entity
 public class IdDocument {
 	

@@ -9,6 +9,14 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Range;
 
+/** Class to hold Phone data.
+	 * 
+	 * @author Aser Ahmad
+	 * @author aaahmad@mum.edu
+	 * @version 1.0
+	 * @since 1.0
+	 *
+	 */
 @Entity
 public class Phone {
 

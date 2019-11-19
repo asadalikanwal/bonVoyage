@@ -19,8 +19,18 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.bonvoyage.validator.Age;
 import com.bonvoyage.validator.Password;
 
+/** Class to hold and map user data at sign up and update. It is composed of two classes:
+ * Address and Phone.
+ * 
+ * @author Aser Ahmad
+ * @author aaahmad@mum.edu
+ * @version 1.0
+ * @since 1.0
+ *
+ */
 @Entity
 public class User {
 @Id
@@ -39,8 +49,10 @@ private String firstName;
 private String lastName;
 
 @Column(name="Birthdate")
+@NotNull(message="{NotNull}")
 @DateTimeFormat(pattern="MM/DD/YYYY")
-@Past(message="{Date.past}") //Create custom validator (?) to make it check for 18 years
+//@Past(message="{Date.past}") //Create custom validator (?) to make it check for 18 years
+@Age(min=18,message="{Age.min}")
 private LocalDate birthdate;
 
 @Column(name="Email")

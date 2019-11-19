@@ -12,6 +12,14 @@ import javax.validation.constraints.Min;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.RetentionPolicy;
 
+/** Custom password annotation.
+ * 
+ * @author Aser Ahmad
+ * @author aaahmad@mum.edu
+ * @version 1.0
+ * @since 1.0
+ *
+ */
 @Target({ElementType.METHOD, ElementType.FIELD, ElementType.ANNOTATION_TYPE})
 @Retention(value=RetentionPolicy.RUNTIME)
 @Constraint(validatedBy=PasswordValidator.class)

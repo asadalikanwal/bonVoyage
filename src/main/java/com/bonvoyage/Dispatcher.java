@@ -60,8 +60,6 @@ public class Dispatcher extends WebMvcConfigurerAdapter {
         return resource;
     }
  
-    
-  
     @Bean(name = "validator")
     public LocalValidatorFactoryBean validator() {
        LocalValidatorFactoryBean bean = new LocalValidatorFactoryBean();
