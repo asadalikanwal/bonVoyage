@@ -1,6 +1,6 @@
 package com.bonvoyage.domain;
 
-import com.sun.istack.internal.NotNull;
+
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.Range;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -13,7 +13,7 @@ import java.time.LocalDate;
 
 @Entity
 public class Car {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -25,17 +25,15 @@ public class Car {
     private String manufacturer;
     @NotBlank
     private String model;
-    @NotNull
+
     @Range(min = 1900, message = "{Size.makeYear.Validation}")
     private int makeYear;
     @NotBlank
     private String color;
-    @NotNull
+
     @Range(min = 1, max = 20, message = "{Size.maxNoOfPassengers.Validation}")
     private int maxNoOfPassengers;
 
-
-    private Driver driver;
 
     public Car() {  }
 
@@ -105,11 +103,5 @@ public class Car {
         this.maxNoOfPassengers = maxNoOfPassengers;
     }
 
-    public Driver getDriver() {
-        return driver;
-    }
 
-    public void setDriver(Driver driver) {
-        this.driver = driver;
-    }
 }
