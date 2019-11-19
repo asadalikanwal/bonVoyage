@@ -18,6 +18,7 @@ import org.hibernate.validator.constraints.Range;
  * @since 1.0
  *
  */
+
 @Entity
 public class ZipCode {
 
