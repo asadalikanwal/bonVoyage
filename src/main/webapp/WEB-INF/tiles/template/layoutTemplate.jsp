@@ -16,11 +16,12 @@
 </c:set>
 <title><spring:message code="${title}" /></title>
 
-<link href="http://getbootstrap.com/dist/css/bootstrap.css"
-	rel="stylesheet">
-
-<link href="http://getbootstrap.com/examples/jumbotron/jumbotron.css"
-	rel="stylesheet">
+	<link rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.css">
+	<link rel="stylesheet" href="http://getbootstrap.com/examples/jumbotron/jumbotron.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 </head>
 
@@ -31,24 +32,13 @@
 			<ul class="nav nav-pills pull-right">
 				<tiles:insertAttribute name="navigation" />
 			</ul>
-			<h3 class="text-muted">Web Store - tiles</h3>
+			<h3 class="text-muted">Bon Voyage</h3>
 		</div>
 
-		<div class="jumbotron">
-			<h1>
-				<!-- Look up Heading Name in message.properties -->
-				<c:set var="heading">
-					<tiles:getAsString name="heading" />
-				</c:set>
-				<spring:message code="${heading}" />
-			</h1>
-			<p>
-				<c:set var="tagline">
-					<tiles:getAsString name="tagline" />
-				</c:set>
-				<spring:message code="${tagline}" />
-			</p>
-		</div>
+
+
+
+
 
 		<div class="row">
 			<tiles:insertAttribute name="body" />
