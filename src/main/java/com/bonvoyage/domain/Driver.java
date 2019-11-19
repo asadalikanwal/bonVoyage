@@ -3,16 +3,14 @@ package com.bonvoyage.domain;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Entity
 public class Driver {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -26,6 +24,14 @@ public class Driver {
     private boolean isDriverApproved;
     @DateTimeFormat(pattern= "MM-dd-yyyy")
     private LocalDate driverApprovalDate;
+
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+
+
+
 
     public Driver(){}
 
