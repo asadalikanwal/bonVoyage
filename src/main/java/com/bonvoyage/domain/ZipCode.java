@@ -10,6 +10,8 @@ import javax.validation.constraints.Digits;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Range;
 
+import java.io.Serializable;
+
 /** Class to hold zip code.
  * 
  * @author Aser Ahmad
@@ -20,7 +22,7 @@ import org.hibernate.validator.constraints.Range;
  */
 
 @Entity
-public class ZipCode {
+public class ZipCode implements Serializable {
 
 	@Id
 	@Column(name="Id")

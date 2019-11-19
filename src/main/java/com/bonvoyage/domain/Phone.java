@@ -9,6 +9,8 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Range;
 
+import java.io.Serializable;
+
 /** Class to hold Phone data.
 	 * 
 	 * @author Aser Ahmad
@@ -18,7 +20,7 @@ import org.hibernate.validator.constraints.Range;
 	 *
 	 */
 @Entity
-public class Phone {
+public class Phone implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

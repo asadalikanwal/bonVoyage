@@ -1,4 +1,5 @@
 package com.bonvoyage.domain;
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.*;
@@ -22,7 +23,7 @@ import com.bonvoyage.validator.Password;
  *
  */
 @Entity
-public class User {
+public class User implements Serializable {
 @Id
 @GeneratedValue(strategy=GenerationType.AUTO)
 @Column(name="User_Id")
@@ -41,7 +42,7 @@ private String lastName;
 @Column(name="Birthdate")
 @NotNull(message="{NotNull}")
 @DateTimeFormat(pattern="MM/DD/YYYY")
-@Age(min=18,message="{Age.min}")
+@Age(min=21,message="{Age.min}")
 private LocalDate birthdate;
 
 @Column(name="Email")
@@ -79,6 +80,7 @@ private double averageRating;
 private long noOfRatings;
 
 @Column(name="User_Role")
+@Enumerated(EnumType.STRING)
 private UserRole userRole;
 
 public Long getId() {

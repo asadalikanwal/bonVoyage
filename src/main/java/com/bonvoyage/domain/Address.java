@@ -14,6 +14,8 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import java.io.Serializable;
+
 /** Class to hold address data.
  * 
  * @author Aser Ahmad
@@ -23,7 +25,7 @@ import org.hibernate.validator.constraints.NotEmpty;
  *
  */
 @Entity
-public class Address {
+public class Address implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
