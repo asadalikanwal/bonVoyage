@@ -24,13 +24,13 @@
                 </div>
                 <div class="panel-body">
                     <div class="form-group">
-                        <label id="name">Name: ${firstName} + ' ' + ${lastName}</label>
+                        <label id="name">Name: ${savedUser.firstName} ${savedUser.lastName}</label>
                     </div>
                     <div class="form-group">
-                        <label id="username">Username: ${username}</label>
+                        <label id="savedUser.username">Username: ${savedUser.username}</label>
                     </div>
                     <spring:url value="/welcome" var="home"/>
-                    <spring:url value="/updateUser/${username}" var="updateUser"/>
+                    <spring:url value="/updateUser/${savedUser.username}" var="updateUser"/>
                     <a href="home" class="btn btn-lg btn-success btn-mini">Start looking for trips</a> |
                     <a href="updateUser" class="btn btn-lg btn-success btn-mini">Change my data</a>
                 </div>

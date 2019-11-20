@@ -28,17 +28,17 @@ public class Phone implements Serializable {
 	private Long id;
 	
 	@Column(name="Area")
-	@NotNull(message="{NotNull}")
+//	@NotNull(message="{NotNull}")
 	@Range(min=100,max=999,message="{Digits.three}")
 	private int area;
 	
 	@Column(name="Prefix")
-	@NotNull(message="{NotNull}")
+//	@NotNull(message="{NotNull}")
 	@Range(min=100,max=999,message="{Digits.three}")
 	private int prefix;
 	
 	@Column(name="Number")
-	@NotNull(message="{NotNull}")
+//	@NotNull(message="{NotNull}")
 	@Range(min=1000,max=9999,message="{Digits.four}")
 	private int number;
 

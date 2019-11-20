@@ -67,7 +67,7 @@ public class User implements Serializable {
 
     @Column(name = "Username", nullable = false, unique = true)
     @NotNull(message = "{NotNull}")
-    @UniqueUsername(message = "{Unique.username}")
+//    @UniqueUsername(message = "{Unique.username}")
     @Size(min = 8, max = 20, message = "{Size.range}")
     private String username;
 
