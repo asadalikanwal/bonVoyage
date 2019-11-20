@@ -3,27 +3,49 @@ package com.bonvoyage.controller;
 import com.bonvoyage.domain.User;
 import com.bonvoyage.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
 
 @Controller
-public class LoginController {
+@SessionAttributes("currentLoggedInUser")
+public class LoginController implements AuthenticationSuccessHandler {
     @Autowired
     UserService userService;
 
     @GetMapping(value="/login")
 public String showLogin(){
-        return "/login";
+        return "login";
     }
 
-//    @PostMapping(value="/postlogin")
-//    public boolean doLogin(String username, String password) {
-//        System.out.println(username + " " + password);
-//        return true;
-//        return !userService.isCurrentUser(username, password);
-//            return"redirect:/welcome";
-//        return "/login";
-//    }
+    @PostMapping(value="/postlogin")
+    public String doLogin(String username, String password) {
+        if(userService.isCurrentUser(username, password))
+            return"../welcome";
+        return "login";
+    }
+
+    @Override
+    public void onAuthenticationSuccess(HttpServletRequest httpServletRequest,
+                                        HttpServletResponse httpServletResponse,
+                                        Authentication authentication) throws IOException, ServletException {
+//        HttpSession session = httpServletRequest.getSession();
+//        User authUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        session.setAttribute("username", authUser.getUsername());
+//        session.setAttribute("authorities", authentication.getAuthorities());
+//
+//        //set our response to OK status
+//        httpServletResponse.setStatus(HttpServletResponse.SC_OK);
+//
+//        //since we have created our custom success handler, its up to us to where
+//        //we will redirect the user after successfully login
+//        httpServletResponse.sendRedirect("home");
+    }
 }

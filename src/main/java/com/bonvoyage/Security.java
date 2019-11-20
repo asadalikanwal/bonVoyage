@@ -44,8 +44,8 @@ public class Security extends WebSecurityConfigurerAdapter
           .jdbcAuthentication()
           .dataSource( dataSource )
           .passwordEncoder( passwordEncoder() )
-          .authoritiesByUsernameQuery( "select u1.username, u2.authority from users u1, authorities u2 where u1.username = u2.username and u1.username =?" )
-		  .usersByUsernameQuery( "select username,password from user where username=?" );
+          .authoritiesByUsernameQuery( "select u.username, u.userRole from User u where u.username =?" )
+		  .usersByUsernameQuery( "select username,password from User where username=?" );
     }
  
  
@@ -53,54 +53,57 @@ public class Security extends WebSecurityConfigurerAdapter
     protected void configure( HttpSecurity http ) throws Exception
     {
         http
- 
+
         /*
            The authorizeRequests configuration is where we specify what roles are allowed access to what URLs.
             One of the most important things is the order of the intercept-urls,
             the most catch-all[default] type patterns should at the bottom of the list as the matches are executed
-            in the order they are configured below.   
- 			(anyRequest()) should always be at the bottom of the list.     
+            in the order they are configured below.
+ 			(anyRequest()) should always be at the bottom of the list.
          */
         /**
-         * @author Aser Ahmad (customization of controllers)
+         * @author Aser Ahmad (customization of URLs)
          */
            .authorizeRequests()
-                .antMatchers( "/login" ).permitAll()
-                .antMatchers( "/users/add" ).hasRole( "ADMIN" )
-                .antMatchers( "/users" ).hasAnyRole( "ADMIN","USER","DRIVER")
+                .antMatchers( "/","/welcome","/login","/users/signup" ).permitAll()
+                .antMatchers( "/admin/**" ).hasRole( "ADMIN" )
+                .antMatchers( "/users/**" ).hasAnyRole( "ADMIN","USER","DRIVER")
+				.antMatchers("/addTrip").hasAnyRole("ADMIN","DRIVER")
                 .anyRequest().permitAll()
              .and()
-            
+
 				/*
-				 * This is where we configure our login form. 
+				 * This is where we configure our login form.
 				 * loginPage: the page that contains the login screen
-				 * login-processing-url: this is the URL to which the login form should be submitted 
+				 * login-processing-url: this is the URL to which the login form should be submitted
 				 * e.g., [<form:form action=login-processing-url]
-				 * defaultSuccessUrl: the URL to which the user will be redirected if login is successful 
+				 * defaultSuccessUrl: the URL to which the user will be redirected if login is successful
 				 * failureUrl: the URL to which the user will be redirected if  failed login
 				 */
              .formLogin()
                 .loginPage( "/login" )
                 .loginProcessingUrl( "/postlogin" )
+				.usernameParameter("username")
+				.passwordParameter("password")
                 .defaultSuccessUrl( "/welcome" )
-                .failureUrl( "/loginfailed" )
+                .failureUrl( "/login" )
                 .permitAll()
                 .and()
- 
+
 				/*
-				 * This is where the logout page and process is configured. 
-				 * The logoutRequestMatcher is the URL to send the user to in order to logout, 
-				 * e.g., <a href="<spring:url  value="/dologout" />">Logout</a> 
+				 * This is where the logout page and process is configured.
+				 * The logoutRequestMatcher is the URL to send the user to in order to logout,
+				 * e.g., <a href="<spring:url  value="/dologout" />">Logout</a>
 				 * the logout-success-url is where to go to if the logout is successful, and
 				 *  the delete-cookies and invalidate-session make sure that we clean up after
 				 * logout
-				 */ 
+				 */
              .logout()
                 .logoutRequestMatcher( new AntPathRequestMatcher( "/dologout" ) )
                 .logoutSuccessUrl( "/logout" )
                 .deleteCookies( "JSESSIONID" )
                 .invalidateHttpSession( true )
-                
+
                 .and()
                 // access-denied-page: this is the page users will be
                 // redirected to when they try to access protected areas.
