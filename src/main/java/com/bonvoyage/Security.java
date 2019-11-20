@@ -3,17 +3,23 @@ package com.bonvoyage;
 import javax.sql.DataSource;
 
 import com.bonvoyage.controller.AuthenticationSuccessController;
+import com.bonvoyage.service.UserService;
+import com.bonvoyage.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
- 
+
+import java.util.List;
+
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity( prePostEnabled = true )
@@ -21,7 +27,25 @@ public class Security extends WebSecurityConfigurerAdapter
 {
      @Autowired
     private DataSource dataSource;
- 
+
+//     @Bean
+
+     @Bean
+	 public UserService userService() {
+     	return new UserServiceImpl();
+	 }
+
+     @Autowired
+	private UserService userService;
+
+//     @Bean
+//	 public DaoAuthenticationProvider authProvider() {
+//     	DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+//     	authProvider.setUserDetailsService((UserDetailsService) userService);
+////     	authProvider.setPasswordEncoder(encoder());
+//     	return authProvider;
+//	 }
+
     @Autowired
     public void configureGlobal( AuthenticationManagerBuilder auth ) throws Exception
     {
@@ -49,8 +73,7 @@ public class Security extends WebSecurityConfigurerAdapter
           .authoritiesByUsernameQuery( "select u.username, u.userRole from User u where u.username =?" )
 		  .usersByUsernameQuery( "select username,password from User where username=?" );
     }
- 
- 
+
      @Override
     protected void configure( HttpSecurity http ) throws Exception
     {

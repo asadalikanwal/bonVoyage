@@ -24,11 +24,10 @@ public class LoginController {
 public String showLogin(){
         return "login";
     }
-
     @PostMapping(value="/postlogin")
     public String doLogin(String username, String password) {
         if(userService.isCurrentUser(username, password))
             return"../welcome";
-        return "login";
+        return "login2222";
     }
 }
