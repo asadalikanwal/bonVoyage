@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @Controller
-public class LoginController implements AuthenticationSuccessHandler {
+public class LoginController {
     @Autowired
     UserService userService;
 
@@ -30,22 +30,5 @@ public String showLogin(){
         if(userService.isCurrentUser(username, password))
             return"../welcome";
         return "login";
-    }
-
-    @Override
-    public void onAuthenticationSuccess(HttpServletRequest httpServletRequest,
-                                        HttpServletResponse httpServletResponse,
-                                        Authentication authentication) throws IOException, ServletException {
-        // Set session variables to hold current user's data
-        HttpSession session = httpServletRequest.getSession();
-        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        session.setAttribute("username", loggedInUser.getUsername());
-        session.setAttribute("role", loggedInUser.getUserRole());
-
-        //set our response to OK status
-        httpServletResponse.setStatus(HttpServletResponse.SC_OK);
-
-        //Redirect the user after successfully login
-        httpServletResponse.sendRedirect("../welcome");
     }
 }

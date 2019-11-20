@@ -3,12 +3,12 @@ package com.bonvoyage.domain;
 import java.io.Serializable;
 
 /*
-* Model For Trip 
-* @author  John Styves Vallon
-* @version 1.0
-* @since   2019-11-18 
-*
-* */
+ * Model For Trip
+ * @author  John Styves Vallon
+ * @version 1.0
+ * @since   2019-11-18
+ *
+ * */
 
 
 import java.util.Date;
@@ -24,22 +24,22 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 public class Trip implements Serializable  {
 	private static final long serialVersionUID = 1L;
- 
+
 	@Id
 	@GeneratedValue (strategy=GenerationType.AUTO)
 	private Integer tripId;
-	
+
 	@NotEmpty
 	private String origin;
 	@NotEmpty
 	private String destination;
-	
-//	@DateTimeFormat(pattern = "MM-dd-yyyy")
+
+	@DateTimeFormat(pattern = "yyyy-mm-dd")
 	private Date originDate;
-	
-//	@DateTimeFormat(pattern = "MM-dd-yyyy")
+
+	@DateTimeFormat(pattern = "yyyy-mm-dd")
 	private Date destinationDate;
-	
+
 	@NotNull
 	private Double originLat;
 	@NotNull
@@ -49,19 +49,45 @@ public class Trip implements Serializable  {
 	@NotNull
 	private Double destinationLng;
 
-	
-	//private List<User> users;
-	
+
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	private User user;
+
 	@NotNull
 	private Integer numberPeople;
-	
+
 	@NotNull
 	private Integer fees;
-	
+
 	@NotEmpty
 	private String PaymentType;
-	
-	
+
+
+	private boolean isFull;
+
+	private String status;
+
+
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public boolean isFull() {
+		return isFull;
+	}
+	public void setFull(boolean isFull) {
+		this.isFull = isFull;
+	}
+
+
+
 	public Integer getTripId() {
 		return tripId;
 	}
@@ -134,5 +160,5 @@ public class Trip implements Serializable  {
 	public void setDestinationLng(Double destinationLng) {
 		this.destinationLng = destinationLng;
 	}
-	
+
 }

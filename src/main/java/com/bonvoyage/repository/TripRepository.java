@@ -15,5 +15,6 @@ import com.bonvoyage.domain.Trip;
 
 @Repository
 public interface TripRepository extends CrudRepository<Trip, Long>  {
-
+//	@Query("select from Trip limit 10")
+//	List<Trip> lastTenTrip();
 }

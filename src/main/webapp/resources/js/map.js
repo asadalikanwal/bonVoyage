@@ -113,7 +113,3 @@ function initMap() {
 
  		return steps;
  	}
- 	
-
- 
-

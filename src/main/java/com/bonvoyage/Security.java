@@ -1,6 +1,8 @@
 package com.bonvoyage;
 
 import javax.sql.DataSource;
+
+import com.bonvoyage.controller.AuthenticationSuccessController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -68,7 +70,7 @@ public class Security extends WebSecurityConfigurerAdapter
                 .antMatchers( "/","/welcome","/login","/users/signup" ).permitAll()
                 .antMatchers( "/admin/**" ).hasRole( "ADMIN" )
                 .antMatchers( "/users/**" ).hasAnyRole( "ADMIN","USER","DRIVER")
-				.antMatchers("/addTrip").hasAnyRole("ADMIN","DRIVER")
+				.antMatchers("/addTrip").permitAll()// .hasAnyRole("ADMIN","DRIVER")
                 .anyRequest().permitAll()
              .and()
 
@@ -85,8 +87,9 @@ public class Security extends WebSecurityConfigurerAdapter
                 .loginProcessingUrl( "/postlogin" )
 				.usernameParameter("username")
 				.passwordParameter("password")
+				.successHandler(new AuthenticationSuccessController())
                 .defaultSuccessUrl( "/welcome" )
-                .failureUrl( "/login" )
+                .failureUrl( "/login111" )
                 .permitAll()
                 .and()
 

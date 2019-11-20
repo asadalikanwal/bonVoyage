@@ -7,6 +7,8 @@
 	<definition name="baseLayout"
 		template="/WEB-INF/tiles/template/layoutTemplate.jsp">
 		<put-attribute name="title" value="Sample Title" />
+		<put-attribute name="header"
+					   value="/WEB-INF/tiles/template/header.jsp" />
 		<put-attribute name="heading" value="" />
 		<put-attribute name="tagline" value="default.tagline" />
 		<put-attribute name="navigation"

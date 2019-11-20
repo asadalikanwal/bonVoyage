@@ -44,7 +44,9 @@
                                        id="password" name="password" type="password"/>
                             </div>
                             <input class="btn btn-lg btn-success btn-mini" type="submit"
-                                   value="Login">
+                                   value="Login"> |
+                            <a href="<spring:url value="/users/signup" />"><input class="btn btn-lg btn-success btn-mini" type="button"
+                                   value="Not a member? Sign up!"></a>
                         </fieldset>
                     </form>
                 </div>
