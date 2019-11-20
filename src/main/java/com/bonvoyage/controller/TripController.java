@@ -87,12 +87,12 @@ public class TripController {
     @RequestMapping(value = "/addTrip", method = RequestMethod.POST)
     public String map(@ModelAttribute("newTrip") Trip newTrip) {
 		System.out.println("_______ INSIDE /addTrip POST _______");
-        System.out.println("Start " + newTrip.getorigin());
-        System.out.println("End  " + newTrip.getdestination());
-        System.out.println("Start Date " + newTrip.getoriginDate());
+        System.out.println("Start " + newTrip.getOrigin());
+        System.out.println("End  " + newTrip.getDestination());
+        System.out.println("Start Date " + newTrip.getOriginDate());
 
 
-        System.out.println("End Date  " + newTrip.getdestinationDate());
+        System.out.println("End Date  " + newTrip.getDestinationDate());
         System.out.println("Number of People " + newTrip.getNumberPeople());
         System.out.println("Fee Type " + newTrip.getPaymentType());
 

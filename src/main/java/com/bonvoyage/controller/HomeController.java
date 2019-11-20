@@ -21,5 +21,13 @@ public class HomeController {
 
 		return "/welcome";
 	}
+
+
+	@RequestMapping({"/login"})
+	public String login() {
+
+
+		return "/login";
+	}
 	
 }

@@ -34,10 +34,10 @@ public class Trip implements Serializable  {
 	@NotEmpty
 	private String destination;
 	
-//	@DateTimeFormat(pattern = "MM-dd-yyyy")
+	@DateTimeFormat(pattern = "MM-dd-yyyy")
 	private Date originDate;
 	
-//	@DateTimeFormat(pattern = "MM-dd-yyyy")
+	@DateTimeFormat(pattern = "MM-dd-yyyy")
 	private Date destinationDate;
 	
 	@NotNull
@@ -60,79 +60,104 @@ public class Trip implements Serializable  {
 	
 	@NotEmpty
 	private String PaymentType;
-	
-	
+
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
+
 	public Integer getTripId() {
 		return tripId;
 	}
+
 	public void setTripId(Integer tripId) {
 		this.tripId = tripId;
 	}
-	public String getorigin() {
+
+	public String getOrigin() {
 		return origin;
 	}
-	public void setorigin(String origin) {
+
+	public void setOrigin(String origin) {
 		this.origin = origin;
 	}
-	public String getdestination() {
+
+	public String getDestination() {
 		return destination;
 	}
-	public void setdestination(String destination) {
+
+	public void setDestination(String destination) {
 		this.destination = destination;
 	}
-	public Date getoriginDate() {
+
+	public Date getOriginDate() {
 		return originDate;
 	}
-	public void setoriginDate(Date originDate) {
+
+	public void setOriginDate(Date originDate) {
 		this.originDate = originDate;
 	}
-	public Date getdestinationDate() {
+
+	public Date getDestinationDate() {
 		return destinationDate;
 	}
-	public void setdestinationDate(Date destinationDate) {
+
+	public void setDestinationDate(Date destinationDate) {
 		this.destinationDate = destinationDate;
 	}
-	public Integer getNumberPeople() {
-		return numberPeople;
-	}
-	public void setNumberPeople(Integer numberPeople) {
-		this.numberPeople = numberPeople;
-	}
-	public Integer getFees() {
-		return fees;
-	}
-	public void setFees(Integer fees) {
-		this.fees = fees;
-	}
-	public String getPaymentType() {
-		return PaymentType;
-	}
-	public void setPaymentType(String paymentType) {
-		PaymentType = paymentType;
-	}
+
 	public Double getOriginLat() {
 		return originLat;
 	}
+
 	public void setOriginLat(Double originLat) {
 		this.originLat = originLat;
 	}
+
 	public Double getOriginLng() {
 		return originLng;
 	}
+
 	public void setOriginLng(Double originLng) {
 		this.originLng = originLng;
 	}
+
 	public Double getDestinationLat() {
 		return destinationLat;
 	}
+
 	public void setDestinationLat(Double destinationLat) {
 		this.destinationLat = destinationLat;
 	}
+
 	public Double getDestinationLng() {
 		return destinationLng;
 	}
+
 	public void setDestinationLng(Double destinationLng) {
 		this.destinationLng = destinationLng;
 	}
-	
+
+	public Integer getNumberPeople() {
+		return numberPeople;
+	}
+
+	public void setNumberPeople(Integer numberPeople) {
+		this.numberPeople = numberPeople;
+	}
+
+	public Integer getFees() {
+		return fees;
+	}
+
+	public void setFees(Integer fees) {
+		this.fees = fees;
+	}
+
+	public String getPaymentType() {
+		return PaymentType;
+	}
+
+	public void setPaymentType(String paymentType) {
+		PaymentType = paymentType;
+	}
 }
