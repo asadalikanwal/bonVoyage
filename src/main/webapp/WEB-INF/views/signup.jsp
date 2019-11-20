@@ -152,6 +152,7 @@
                                     </td>
                                 </tr>
                             </table>
+                            <input id="userRole" name="userRole" type="hidden" value="NONE">
                             <form:button class="btn btn-lg btn-success btn-mini" type="submit">I'm ready for trips!</form:button>
                         </fieldset>
                     </form:form>
