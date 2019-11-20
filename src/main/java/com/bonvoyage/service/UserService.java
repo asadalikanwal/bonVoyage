@@ -8,6 +8,10 @@ import java.util.List;
 public interface UserService {
     void saveUser(User user);
 
+    User findUserById(Long id);
+
+    List<User> findAllUsers();
+
     List<User> findUsersByRole(UserRole userRole);
 
     boolean usernameExists(String username);

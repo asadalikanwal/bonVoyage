@@ -4,6 +4,7 @@ import com.bonvoyage.domain.User;
 import com.bonvoyage.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +16,6 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @Controller
-@SessionAttributes("currentLoggedInUser")
 public class LoginController implements AuthenticationSuccessHandler {
     @Autowired
     UserService userService;
@@ -36,16 +36,16 @@ public String showLogin(){
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest,
                                         HttpServletResponse httpServletResponse,
                                         Authentication authentication) throws IOException, ServletException {
-//        HttpSession session = httpServletRequest.getSession();
-//        User authUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        session.setAttribute("username", authUser.getUsername());
-//        session.setAttribute("authorities", authentication.getAuthorities());
-//
-//        //set our response to OK status
-//        httpServletResponse.setStatus(HttpServletResponse.SC_OK);
-//
-//        //since we have created our custom success handler, its up to us to where
-//        //we will redirect the user after successfully login
-//        httpServletResponse.sendRedirect("home");
+        // Set session variables to hold current user's data
+        HttpSession session = httpServletRequest.getSession();
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        session.setAttribute("username", loggedInUser.getUsername());
+        session.setAttribute("role", loggedInUser.getUserRole());
+
+        //set our response to OK status
+        httpServletResponse.setStatus(HttpServletResponse.SC_OK);
+
+        //Redirect the user after successfully login
+        httpServletResponse.sendRedirect("../welcome");
     }
 }
