@@ -29,10 +29,8 @@
                     <div class="form-group">
                         <label id="savedUser.username">Username: ${savedUser.username}</label>
                     </div>
-                    <spring:url value="/welcome" var="home"/>
-                    <spring:url value="/updateUser/${savedUser.username}" var="updateUser"/>
-                    <a href="home" class="btn btn-lg btn-success btn-mini">Start looking for trips</a> |
-                    <a href="updateUser" class="btn btn-lg btn-success btn-mini">Change my data</a>
+                    <a href="../welcome" class="btn btn-lg btn-success btn-mini">Start looking for trips</a> |
+                    <a href="<spring:url value='/updateUser/${savedUser.username}'/>" class="btn btn-lg btn-success btn-mini">Change my data</a>
                 </div>
             </div>
         </div>

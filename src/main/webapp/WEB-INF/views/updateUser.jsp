@@ -6,7 +6,7 @@
 <section>
     <div class="jumbotron">
         <div class="container">
-            <h1>Welcome to our community!!</h1> <%--<spring:message code="${login.mainLine}"/>--%>
+            <h1>Update your data</h1> <%--<spring:message code="${login.mainLine}"/>--%>
         </div>
     </div>
 </section>
@@ -18,9 +18,9 @@
                     <h3 class="panel-title">Please fill in your data to sign up</h3><%--<spring:message code="${login.pleaseSignin}"/>--%>
                 </div>
                 <div class="panel-body">
-                    <spring:url value="/users/signup" var="action"/>
-                    <%--@elvariable id="newUser" type="com.bonvoyage.domain.User"--%>
-                    <form:form action="${action}" method="post" modelAttribute="newUser">
+                    <%--@elvariable id="userToUpdate" type="com.bonvoyage.domain.User"--%>
+                        <spring:url value="/updateUser/${userToUpdate.username}" var="action"/>
+                    <form:form action="${action}" method="put" modelAttribute="userToUpdate">
                         <fieldset>
                             <table>
                                 <tr>
@@ -138,7 +138,7 @@
                                         <label for="username">Username:</label>
                                     </td>
                                     <td class="form-group">
-                                        <form:input class=" form:input-large" id="username" path="username"/>
+                                        <form:input class=" form:input-large" id="username" path="username" readonly="true"/>
                                         <br/><form:errors class="alert alert-danger" path="username"/>
                                     </td>
                                 </tr>
@@ -152,7 +152,7 @@
                                     </td>
                                 </tr>
                             </table>
-                            <form:button class="btn btn-lg btn-success btn-mini" type="submit">I'm ready for trips!</form:button>
+                            <form:button class="btn btn-lg btn-success btn-mini" type="submit">Update my data</form:button>
                         </fieldset>
                     </form:form>
                 </div>
