@@ -1,194 +1,145 @@
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ page session="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
+
 <html>
 <head>
-	<title>ComPro Taxi</title>
-    <!--  <style type="text/css">@import url("<spring:url value="/resources/css/main.css"/>");</style>
-     <style type="text/css">@import url("<spring:url value="/resources/css/map.css"/>");</style> -->
-    
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<style>
-
-.carousel-inner img {
-      width: 50%;
-      height: 60%;
-  }
-  
-  
-
-</style>     
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="http://getbootstrap.com/dist/css/bootstrap.css"rel="stylesheet">
+    <link href="http://getbootstrap.com/examples/jumbotron/jumbotron.css"rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="http://maps.google.com/maps/api/js?key=AIzaSyAPa16UTP31DOP2Yp688Tymq3DHGzSQ6kg&sensor=false" type="text/javascript"></script>
+    <title>Welcome</title>
+    <style>
+        #map {
+            height: 100%;
+        }
+    </style>
 </head>
- 
- <body>
- 
- 
- <div class="container">  
+<body>
+<div class="container">
+    <div class="shadow-lg p-3 mb-5 bg-white rounded">
 
+        <div class="row justify-content-center align-items-center">
+            <form:form modelAttribute="searchTrip" action="search_Trip" method="post" class="form-inline">
+                <div class="form-group mb-2">
+                    <span class="glyphicon glyphicon-map-marker"></span>
+                    <form:input path="origin_search" type="text" class="form-control" id="origin_search" placeholder="Origin"/>
+                    <form:errors path="origin_search" cssClass="text-danger"/>
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                    <form:input path="destination_search" type="text" class="form-control" id="destination_search" placeholder="Destination"/>
+                    <form:errors path="destination_search" cssClass="text-danger"/>
+                </div>
 
+                <div class="form-group mx-sm-3 mb-2">
+                    <button type="submit" class="btn btn-info">
+                        <span class="glyphicon glyphicon-search"></span> Search
+                    </button>
+                </div>
 
-<div id="demo" class="carousel slide" data-ride="carousel">
-
-  <!-- Indicators -->
-  <ul class="carousel-indicators">
-    <li data-target="#demo" data-slide-to="0" class="active"></li>
-    <li data-target="#demo" data-slide-to="1"></li>
-    <li data-target="#demo" data-slide-to="2"></li>
-  </ul>
-
-  <!-- The slideshow -->
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-             <img class="d-block w-100"  src="<spring:url value="/resources/images/image_one.jpg" />" alt="First slide"/>
-
+            </form:form>
+        </div>
     </div>
-    <div class="carousel-item">
-             <img class="d-block w-100"  src="<spring:url value="/resources/images/image_one.jpg" />" alt="First slide"/>
 
+
+    <div id="map">
     </div>
-    <div class="carousel-item">
-             <img class="d-block w-100"  src="<spring:url value="/resources/images/image_one.jpg" />" alt="First slide"/>
+    <div style="margin-top:10px;"></div>
 
+    <div class="card">
+        <div class="card-body">
+
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+
+
+            <a href="#" class="btn btn-info">JOIN TRIP</a>
+        </div>
     </div>
-  </div>
 
-  <!-- Left and right controls -->
-  <a class="carousel-control-prev" href="#demo" data-slide="prev">
-    <span class="carousel-control-prev-icon"></span>
-  </a>
-  <a class="carousel-control-next" href="#demo" data-slide="next">
-    <span class="carousel-control-next-icon"></span>
-  </a>
-
-</div>
+    <div style="margin-top:10px;"></div>
 
 
 
+    <div class="card">
+        <div class="card-body">
+
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
 
 
-
-<div style="margin-top:50px;"></div>
-
-
-
-
-
-<div class="shadow-lg p-3 mb-5 bg-white rounded">
-
-<div class="row justify-content-center align-items-center">
-<form class="form-inline">
-  
-     <div class="form-group mb-2">
-       <span class="glyphicon glyphicon-map-marker"></span>
-       <input type="text" class="form-control" id="origin" placeholder="Origin"/>
-     </div>
-    <div class="form-group mx-sm-3 mb-2">
-      <input type="text" class="form-control" id="destination" placeholder="Destination"/>
+            <a href="#" class="btn btn-info">JOIN TRIP</a>
+        </div>
     </div>
-    
-    <div class="form-group mx-sm-3 mb-2">
-        <button type="button" class="btn btn-info">
-          <span class="glyphicon glyphicon-search"></span> Search
-        </button>
-    </div>
- 
-</form>
-</div>
-</div>
- 
- 
- 
-<div class="card">
-  <h5 class="card-header">Featured</h5>
-  <div class="card-body">
-  <div id="map" class="float-right" style="width:200px; height:200px;">
-    </div>
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    
-    
-    <a href="#" class="btn btn-info">JOIN TRIP</a>
-  </div>
-</div>
 
-<div style="margin-top:50px;"></div>
+    <div style="margin-top:10px;"></div>
+
+
+
+    <div class="card">
+        <div class="card-body">
+
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+
+
+            <a href="#" class="btn btn-info">JOIN TRIP</a>
+        </div>
+    </div>
+
+
+
 
 
 </div>
 
-
+<div style="margin-top:100px;"></div>
 
 
 <script>
 
+    var locations = [
+        ['Bondi Beach', -33.890542, 151.274856, 4],
+        ['Coogee Beach', -33.923036, 151.259052, 5],
+        ['Cronulla Beach', -34.028249, 151.157507, 3],
+        ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
+        ['Maroubra Beach', -33.950198, 151.259302, 1]
+    ];
 
-/* function initMap() {
-	var mapProp= {
-	  center:new google.maps.LatLng(51.508742,-0.120850),
-	  zoom:5,
-	};
-	var map = new google.maps.Map(document.getElementById("map"),mapProp);
-} */
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 10,
+        center: new google.maps.LatLng(-33.92, 151.25),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
 
+    var infowindow = new google.maps.InfoWindow();
 
+    var marker, i;
 
-function initMap() {
-	  var pointA = new google.maps.LatLng(51.7519, -1.2578),
-	    pointB = new google.maps.LatLng(50.8429, -0.1313),
-	    myOptions = {
-	      zoom: 7,
-	      center: pointA
-	    },
-	    map = new google.maps.Map(document.getElementById('map'), myOptions),
-	    // Instantiate a directions service.
-	    directionsService = new google.maps.DirectionsService,
-	    directionsDisplay = new google.maps.DirectionsRenderer({
-	      map: map
-	    }),
-	    markerA = new google.maps.Marker({
-	      position: pointA,
-	      title: "point A",
-	      label: "A",
-	      map: map
-	    }),
-	    markerB = new google.maps.Marker({
-	      position: pointB,
-	      title: "point B",
-	      label: "B",
-	      map: map
-	    });
+    for (i = 0; i < locations.length; i++) {
+        marker = new google.maps.Marker({
+            position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+            map: map
+        });
 
-	  // get route from A to B
-	  calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, pointB);
-
-	}
-
-
-function calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, pointB) {
-	  directionsService.route({
-	    origin: pointA,
-	    destination: pointB,
-	    travelMode: google.maps.TravelMode.DRIVING
-	  }, function(response, status) {
-	    if (status == google.maps.DirectionsStatus.OK) {
-	      directionsDisplay.setDirections(response);
-	    } else {
-	      window.alert('Directions request failed due to ' + status);
-	    }
-	  });
-	}
-
+        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            return function() {
+                infowindow.setContent(locations[i][0]);
+                infowindow.open(map, marker);
+            }
+        })(marker, i));
+    }
 
 
 
 </script>
-  
-  
-  
- <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPa16UTP31DOP2Yp688Tymq3DHGzSQ6kg&libraries=places&callback=initMap"
-        async defer></script>
+
+
 </body>
 </html>

@@ -73,7 +73,7 @@ public class User implements Serializable {
 
     @Column(name = "Password", nullable = false)
     @NotNull(message = "{NotNull}")
-    @Size(min = 8, max = 20, message = "{Size.range}")
+    @Size(min = 8, message = "{Size.min}")
     @Password(message = "{Password}")
     private String password;
 

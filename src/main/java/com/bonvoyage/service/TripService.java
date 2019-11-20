@@ -16,5 +16,6 @@ public interface TripService {
 	public void saveTripe(Trip trip);
 	public List<Trip> findTripByOriginAndDest(String origin, String destination);
 	public List<Trip> listTripByLocalisation(String origin, String destination);
+	public List<Trip> lastTenTrip();
 	public Trip findTripById(Long tripId);
 }
