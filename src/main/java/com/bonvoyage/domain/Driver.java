@@ -1,27 +1,34 @@
 package com.bonvoyage.domain;
 
+import com.sun.xml.internal.ws.api.FeatureListValidatorAnnotation;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
-public class Driver {
+public class Driver implements Serializable{
 
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
     @NotBlank
     @Size(min =9, max = 9, message ="{Size.licenseNo.validation}")
     private String drivingLicenseNo;
+
     @NotNull
     @DateTimeFormat(pattern= "MM-dd-yyyy")
     private LocalDate drivingExpirationDate;
 
     private boolean isDriverApproved;
+
     @DateTimeFormat(pattern= "MM-dd-yyyy")
     private LocalDate driverApprovalDate;
 
@@ -29,6 +36,10 @@ public class Driver {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @Valid
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "car_id")
+    private Car car;
 
 
 
@@ -79,5 +90,21 @@ public class Driver {
 
     public void setDriverApprovalDate(LocalDate driverApprovalDate) {
         this.driverApprovalDate = driverApprovalDate;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
     }
 }

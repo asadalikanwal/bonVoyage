@@ -1,0 +1,43 @@
+package com.bonvoyage.service.impl;
+
+import com.bonvoyage.domain.Driver;
+import com.bonvoyage.repository.DriverRepository;
+import com.bonvoyage.service.DriverService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+@Service
+@Transactional
+public class DriverServiceImpl implements DriverService {
+
+    @Autowired
+    DriverRepository driverRepository;
+
+//    public String verify(Driver driver){
+//
+//        if(driver.getDrivingLicenseNo().equals("") || driver.getDrivingExpirationDate()==null ){
+//            return "false";
+//        }else{
+//            return "true";
+//        }
+//
+//    }
+
+    public void save(Driver driver){
+
+        driverRepository.save(driver);
+    }
+
+
+    public Driver findOne(Long id){
+        return driverRepository.findOne(id);
+    }
+
+    @Override
+    public void setCarId(int id, int carId) {
+//        driverRepository.setCarId(id, carId);
+    }
+
+
+}
