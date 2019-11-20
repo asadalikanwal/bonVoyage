@@ -22,7 +22,6 @@ public class TilesConfig {
            TilesConfigurer tilesConfigurer = new TilesConfigurer();
            tilesConfigurer.setDefinitions("/WEB-INF/tiles/definitions/tile3-definition.xml");
            tilesConfigurer.setCheckRefresh(true);
-
            return tilesConfigurer;
        }
 }

@@ -25,12 +25,11 @@ import java.io.Serializable;
 public class ZipCode implements Serializable {
 
 	@Id
-	@Column(name="Id")
+//	@Column(name="Id", updatable = false, nullable = false)
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
 	@Column(name="Basic_Code")
-	@NotEmpty(message="{NotEmpty}")
 	@Range(min=10000,max=99999,message="{Digits.five}")
 	private int basicCode;
 	

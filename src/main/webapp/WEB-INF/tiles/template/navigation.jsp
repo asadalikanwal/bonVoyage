@@ -8,29 +8,28 @@
 </li>
 
 <li>
-    <a href="<spring:url value="/products/" />">
+    <a href="<spring:url value="/users/signup" />">
         <button type="button" class="btn btn-info">
-            Products
+            Join us!
         </button>
     </a>
 
 </li>
-<li>
-    <a href="<spring:url value="/products/add" />">
+<%--<li>--%>
+<%--    <a href="<spring:url value="/products/add" />">--%>
 
+<%--        <button type="button" class="btn btn-info">--%>
+<%--            Add Product--%>
+<%--        </button>--%>
+<%--    </a>--%>
+
+<%--</li>--%>
+<li>
+    <a href="<spring:url value="/login" />">
         <button type="button" class="btn btn-info">
-            Add Product
+            Login
         </button>
     </a>
-
-</li>
-<li>
-    <a href="<spring:url value="/login/" />">
-        <button type="button" class="btn btn-info">
-            login
-        </button>
-    </a>
-
 </li>
 <li>
     <a href="<spring:url value="/addTrip" />">

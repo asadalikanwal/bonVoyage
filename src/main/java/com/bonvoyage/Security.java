@@ -1,7 +1,6 @@
 package com.bonvoyage;
 
 import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -45,8 +44,8 @@ public class Security extends WebSecurityConfigurerAdapter
           .jdbcAuthentication()
           .dataSource( dataSource )
           .passwordEncoder( passwordEncoder() )
-          .usersByUsernameQuery( "select username,password,enabled from users where username=?" )
-          .authoritiesByUsernameQuery( "select u1.username, u2.authority from users u1, authorities u2 where u1.username = u2.username and u1.username =?" );
+          .authoritiesByUsernameQuery( "select u1.username, u2.authority from users u1, authorities u2 where u1.username = u2.username and u1.username =?" )
+		  .usersByUsernameQuery( "select username,password from user where username=?" );
     }
  
  
@@ -66,7 +65,7 @@ public class Security extends WebSecurityConfigurerAdapter
          * @author Aser Ahmad (customization of controllers)
          */
            .authorizeRequests()
-                .antMatchers( "/login**" ).permitAll()
+                .antMatchers( "/login" ).permitAll()
                 .antMatchers( "/users/add" ).hasRole( "ADMIN" )
                 .antMatchers( "/users" ).hasAnyRole( "ADMIN","USER","DRIVER")
                 .anyRequest().permitAll()
@@ -86,7 +85,7 @@ public class Security extends WebSecurityConfigurerAdapter
                 .defaultSuccessUrl( "/welcome" )
                 .failureUrl( "/loginfailed" )
                 .permitAll()
-                 .and()
+                .and()
  
 				/*
 				 * This is where the logout page and process is configured. 

@@ -14,7 +14,7 @@
 <c:set var="title">
 	<tiles:getAsString name="title" />
 </c:set>
-<title><spring:message code="${title}" /></title>
+<title><spring:message code="${title}"/></title>
 
 	<link rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.css">
 	<link rel="stylesheet" href="http://getbootstrap.com/examples/jumbotron/jumbotron.css">
@@ -29,16 +29,11 @@
 
 	<div class="container">
 		<div class="header">
+			<h3 class="text-muted">Bon Voyage</h3>
 			<ul class="nav nav-pills pull-right">
 				<tiles:insertAttribute name="navigation" />
 			</ul>
-			<h3 class="text-muted">Bon Voyage</h3>
 		</div>
-
-
-
-
-
 
 		<div class="row">
 			<tiles:insertAttribute name="body" />

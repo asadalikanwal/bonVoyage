@@ -1,1 +1,1 @@
-<p>&copy; Company 2014</p>
+<p>&copy; Bon Voyage 2019</p>

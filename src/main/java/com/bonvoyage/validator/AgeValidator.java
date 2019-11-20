@@ -9,15 +9,19 @@ import javax.validation.ConstraintValidatorContext;
 public class AgeValidator implements ConstraintValidator<Age, LocalDate>{
 
 	private long minAge;
-	
+
+
 	@Override
 	public void initialize(Age enteredAge) {
 		this.minAge = enteredAge.min();
+
 	}
 
 	@Override
 	public boolean isValid(LocalDate checkedDate, ConstraintValidatorContext context) {
 		// Age is valid only if >= the specified minimum age
+		if(checkedDate == null)
+			return false;
 		LocalDate today = LocalDate.now();
 		return ChronoUnit.YEARS.between(checkedDate, today) >= minAge;
 	}

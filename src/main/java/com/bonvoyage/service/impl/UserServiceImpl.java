@@ -15,9 +15,10 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     @Autowired
     UserRepository userRepository;
+
     @Override
-    public User saveUser(User user) {
-        return userRepository.save(user);
+    public void saveUser(User user) {
+        userRepository.save(user);
     }
 
     @Override
@@ -27,11 +28,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int countOfUsername(String username) {
-        return userRepository.countOfUsername(username);
+    public boolean usernameExists(String username) {
+        return findUserByUsername(username)!=null;
     }
 
     public User findUserByUsername(String username) {
         return userRepository.findUserByUsername(username);
+    }
+
+    @Override
+    public boolean isCurrentUser(String username, String password) {
+        return userRepository.isCurrentUser(username, password) == 1;
     }
 }

@@ -71,6 +71,7 @@ public class Dispatcher extends WebMvcConfigurerAdapter {
     @Bean(name = "multipartResolver")
     public CommonsMultipartResolver multipartResolver() {
         CommonsMultipartResolver resolver = new CommonsMultipartResolver();
+//        multipartResolver().setMaxUploadSizePerFile(1048576); //1MB
         resolver.setDefaultEncoding("utf-8");
         return resolver;
     }
@@ -88,9 +89,6 @@ public class Dispatcher extends WebMvcConfigurerAdapter {
 //        multipartResolver.setMaxUploadSize(1 * 1024 * 1024); //1 MB
 //        return multipartResolver;
 //    }
-
-
-
 
     public void addFormatters(FormatterRegistry registry) {
 

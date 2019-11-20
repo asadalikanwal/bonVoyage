@@ -6,11 +6,13 @@ import com.bonvoyage.domain.UserRole;
 import java.util.List;
 
 public interface UserService {
-    User saveUser(User user);
+    void saveUser(User user);
 
     List<User> findUsersByRole(UserRole userRole);
 
-    int countOfUsername(String username);
+    boolean usernameExists(String username);
 
     User findUserByUsername(String username);
+
+    boolean isCurrentUser(String username, String password);
 }

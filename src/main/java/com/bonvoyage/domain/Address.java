@@ -16,90 +16,90 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import java.io.Serializable;
 
-/** Class to hold address data.
- * 
+/**
+ * Class to hold address data.
+ *
  * @author Aser Ahmad
  * @author aaahmad@mum.edu
  * @version 1.0
  * @since 1.0
- *
  */
 @Entity
 public class Address implements Serializable {
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="Address_Id")
-	private Long id;
-	
-	@Column(name="Door")
-	private String door;
-	
-	@Column(name="Street")
-	@NotEmpty(message="{NotEmpty}")
-	@Size(min=4, max=20,message="{Size.range}")
-	private String street;
-	
-	@Column(name="City")
-	@NotEmpty(message="{NotEmpty}")
-	@Size(min=4, max=20,message="{Size.range}")
-	private String city;
-	
-	@Column(name="State")
-	@NotEmpty(message="{NotEmpty}")
-	@Size(min=2,max=2,message="{Size.exact}")
-	private String state;
-	
-	@Valid
-	@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
-	@JoinColumn(name="ZipCode_Id")
-	private ZipCode zipCode;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @Column(name = "Address_Id", updatable = false, nullable = false)
+    private Long id;
 
-	public Long getId() {
-		return id;
-	}
+    @Column(name = "Door")
+    private String door;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @Column(name = "Street")
+    @NotEmpty(message = "{NotEmpty}")
+    @Size(min = 4, max = 20, message = "{Size.range}")
+    private String street;
 
-	public String getDoor() {
-		return door;
-	}
+    @Column(name = "City")
+    @NotEmpty(message = "{NotEmpty}")
+    @Size(min = 4, max = 20, message = "{Size.range}")
+    private String city;
 
-	public void setDoor(String door) {
-		this.door = door;
-	}
+    @Column(name = "State")
+    @NotEmpty(message = "{NotEmpty}")
+    @Size(min = 2, max = 2, message = "{Size.exact}")
+    private String state;
 
-	public String getStreet() {
-		return street;
-	}
+    @Valid
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "ZipCode_Id")
+    private ZipCode zipCode;
 
-	public void setStreet(String street) {
-		this.street = street;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public String getCity() {
-		return city;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setCity(String city) {
-		this.city = city;
-	}
+    public String getDoor() {
+        return door;
+    }
 
-	public String getState() {
-		return state;
-	}
+    public void setDoor(String door) {
+        this.door = door;
+    }
 
-	public void setState(String state) {
-		this.state = state;
-	}
+    public String getStreet() {
+        return street;
+    }
 
-	public ZipCode getZipCode() {
-		return zipCode;
-	}
+    public void setStreet(String street) {
+        this.street = street;
+    }
 
-	public void setZipCode(ZipCode zipCode) {
-		this.zipCode = zipCode;
-	}
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public ZipCode getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(ZipCode zipCode) {
+        this.zipCode = zipCode;
+    }
 }

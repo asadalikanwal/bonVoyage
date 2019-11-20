@@ -28,9 +28,10 @@ public class UserController {
     public String createUser(@Valid @ModelAttribute("newUser") User userToCreate, BindingResult result, RedirectAttributes redirectAttributes) {
     if (result.hasErrors())
         return "signup";
-    // Create new user and assign it to the model in the same time
-    redirectAttributes.addFlashAttribute("savedUser", userService.saveUser(userToCreate));
-    return "redirect:/success";
+
+    userService.saveUser(userToCreate);
+    redirectAttributes.addFlashAttribute("savedUser", userToCreate);
+        return "redirect:/users/success";
     }
 
     @GetMapping(value="/success")

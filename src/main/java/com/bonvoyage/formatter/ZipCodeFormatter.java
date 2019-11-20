@@ -1,5 +1,6 @@
 package com.bonvoyage.formatter;
 
+import java.text.Format;
 import java.text.ParseException;
 import java.util.Locale;
 
@@ -23,9 +24,11 @@ public class ZipCodeFormatter implements Formatter<ZipCode>{
 
 	@Override
 	public String print(ZipCode zipCode, Locale locale) {
+		// if no extended code, return basic code only. Otherwise, return basic code +
+		// extended code padded to five places.
 		if (zipCode.getPlusFour()==0)
 			return zipCode.getBasicCode() + "";
-		return zipCode.getBasicCode() + "-" + zipCode.getPlusFour();
+		return zipCode.getBasicCode() + "-" + String.format("%05d", zipCode.getPlusFour());
 	}
 
 	@Override
