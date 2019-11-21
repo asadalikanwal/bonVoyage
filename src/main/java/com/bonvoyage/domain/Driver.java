@@ -106,4 +106,12 @@ public class Driver implements Serializable{
     public void setCar(Car car) {
         this.car = car;
     }
+
+    public Long getUserID() {
+        return user.getId();
+    }
+
+    public void setUserID(Long userId) {
+        this.user.setId(userId);
+    }
 }
