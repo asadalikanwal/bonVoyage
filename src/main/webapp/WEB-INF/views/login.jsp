@@ -20,19 +20,19 @@
                 <div class="panel-body">
                     <c:if test="${not empty error}">
                         <div class="alert alert-danger">
-<%--                            <spring:message--%>
-<%--                                    code="login.badCredentials"/>--%>
-                                Incorrect username or password.
+                                <%--                            <spring:message--%>
+                                <%--                                    code="login.badCredentials"/>--%>
+                            Incorrect username or password.
                             <br/>
                         </div>
                     </c:if>
 
-                    <spring:url value="/postlogin" var="action"/>
+                    <spring:url value="/postlogin" var="action" />
 
                     <form action="${action}" method="post">
-<%--                    <div class="alert alert-danger">--%>
-<%--                        <form code="login.badCredentials" path="*">Incorrect username or password.</form>--%>
-<%--                    </div>--%>
+                        <%--                    <div class="alert alert-danger">--%>
+                        <%--                        <form code="login.badCredentials" path="*">Incorrect username or password.</form>--%>
+                        <%--                    </div>--%>
                         <security:csrfInput/>
                         <fieldset>
                             <div class="form-group">
@@ -44,9 +44,10 @@
                                        id="password" name="password" type="password"/>
                             </div>
                             <input class="btn btn-lg btn-success btn-mini" type="submit"
-                                   value="Login"> |
-                            <a href="<spring:url value="/users/signup" />"><input class="btn btn-lg btn-success btn-mini" type="button"
-                                   value="Not a member? Sign up!"></a>
+                                   value="Login">
+                            <a href="<spring:url value="/users/signup" />"><input
+                                    class="btn btn-lg btn-success btn-mini" type="button"
+                                    value="Not a member? Sign up!"></a>
                         </fieldset>
                     </form>
                 </div>

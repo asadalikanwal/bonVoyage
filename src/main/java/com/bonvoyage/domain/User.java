@@ -77,6 +77,8 @@ public class User implements Serializable {
     @Password(message = "{Password}")
     private String password;
 
+    private boolean enabled;
+
     @Column(name = "Average_Rating")
     private double averageRating;
 
@@ -167,6 +169,14 @@ public class User implements Serializable {
         this.password = password;
     }
 
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
     public double getAverageRating() {
         return averageRating;
     }
@@ -181,5 +191,13 @@ public class User implements Serializable {
 
     public void setUserRole(UserRole userRole) {
         this.userRole = userRole;
+    }
+
+    public long getNoOfRatings() {
+        return noOfRatings;
+    }
+
+    public void setNoOfRatings(long noOfRatings) {
+        this.noOfRatings = noOfRatings;
     }
 }
