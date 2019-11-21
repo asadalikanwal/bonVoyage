@@ -14,8 +14,14 @@ import java.util.List;
 
 public interface TripService {
 	public void saveTripe(Trip trip);
-	public List<Trip> findTripByOriginAndDest(String origin, String destination);
+	//public List<Trip> findTripByOriginAndDest(String origin, String destination);
+	public List<Trip> findTripByOriginAndDest(String origin);
+
 	public List<Trip> listTripByLocalisation(String origin, String destination);
 	public List<Trip> lastTenTrip();
+	public List<Trip>  findByUserId(long id);
+
+	public List<Trip> AllTrip();
+
 	public Trip findTripById(Long tripId);
 }

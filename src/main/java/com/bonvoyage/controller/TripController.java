@@ -2,6 +2,9 @@ package com.bonvoyage.controller;
 
 
 
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.bonvoyage.domain.Search;
 import com.bonvoyage.domain.Trip;
 import com.bonvoyage.service.TripService;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /*
@@ -43,30 +50,38 @@ public class TripController {
 
     @RequestMapping(value = "/addTrip", method = RequestMethod.POST)
     public String addTrip(@ModelAttribute("newTrip") Trip newTrip, Model model) {
-        System.out.println("Start "+newTrip.getorigin());
-        System.out.println("End  "+newTrip.getdestination());
-        System.out.println("Start Date "+newTrip.getoriginDate());
-        System.out.println("End Date  "+newTrip.getdestinationDate());
-        System.out.println("Orignin Lat  "+newTrip.getOriginLat());
-        System.out.println("Orignin Lng "+newTrip.getOriginLng());
-        System.out.println("Destination Lat  "+newTrip.getDestinationLat());
-        System.out.println("Destination Lng "+newTrip.getDestinationLng());
 
-        System.out.println("Get Fee of People "+newTrip.getFees());
-        System.out.println("Number of People "+newTrip.getNumberPeople());
-        System.out.println("Fee Type "+newTrip.getPaymentType());
-
-        //newTrip.setUser();
+        newTrip.setStatus("posted");
+        //newTrip.setUser(2);
         /*
          * newTrip.se
          * */
 
-        //tripService.saveTripe(newTrip);
-        return "redirect:/searchTrip";
+        tripService.saveTripe(newTrip);
+        return "redirect:/driver_Trip";
     }
 
-    @RequestMapping(value = "/searchTrip", method = RequestMethod.GET)
-    public String search(@ModelAttribute("searchTrip") Search searc) {
-        return "search";
+    @RequestMapping(value = "/driver_Trip", method = RequestMethod.GET)
+    public String search(@ModelAttribute("searchTrip") Search search,Model model) {
+
+        ObjectMapper mapper = new ObjectMapper();
+        List<Trip> listTrip = tripService.findByUserId(2);
+
+        String trips = null;
+        try {
+            trips = mapper.writeValueAsString(listTrip);
+        } catch (JsonGenerationException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (JsonMappingException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        model.addAttribute("listCurrentUserTripjs",trips);
+        model.addAttribute("listCurrentUserTrip",tripService.findByUserId(2));
+        return "driver_trip";
     }
 }
