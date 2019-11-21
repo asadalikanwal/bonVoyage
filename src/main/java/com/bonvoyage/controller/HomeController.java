@@ -16,6 +16,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.bonvoyage.domain.Search;
 import com.bonvoyage.domain.Trip;
@@ -111,6 +112,12 @@ public class HomeController {
 		return "redirect:/search";
 	}
 
+
+
+	@RequestMapping(value="/updateTrip",method = RequestMethod.PATCH)
+    public @ResponseBody Trip updateTrip(Trip trip){
+	    return trip;
+    }
 
 
 

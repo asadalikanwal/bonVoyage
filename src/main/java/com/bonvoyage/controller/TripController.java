@@ -82,6 +82,8 @@ public class TripController {
         }
         model.addAttribute("listCurrentUserTripjs",trips);
         model.addAttribute("listCurrentUserTrip",tripService.findByUserId(2));
-        return "driver_trip";
+        return "/driver_trip";
     }
+
+
 }
