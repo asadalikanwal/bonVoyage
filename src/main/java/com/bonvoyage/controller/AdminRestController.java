@@ -28,7 +28,7 @@ public class AdminRestController {
     @RequestMapping(value = "/updateUser/{userId}", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public User addItem(@PathVariable String userId) {
-        System.out.println("User Update from Admin controller ________");
+        System.out.println("UUserRoleser Update from Admin controller ________");
         Long id = Long.parseLong(userId);
         User user = userService.findUserById(id);
         if(user == null) {
@@ -56,10 +56,11 @@ public class AdminRestController {
         System.out.println("Got the user _____________ : " + driver.isDriverApproved());
         driverService.save(driver);
 
-        User user = userService.findUserById(driver.getUserID());
-        if(user == null) {
-            throw new IllegalArgumentException(new UserNotFoundException(userId, null));
-        }
+//        User user = userService.findUserById(driver.getUserID());
+//        if(user == null) {
+//            throw new IllegalArgumentException(new UserNotFoundException(userId, null));
+//        }
+        User user = driver.getUser();
         user.setUserRole(UserRole.ROLE_DRIVER);
         userService.saveUser(user);
         return driver;
