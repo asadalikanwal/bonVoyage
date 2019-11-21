@@ -6,6 +6,8 @@ import javax.persistence.*;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
 
+import com.bonvoyage.validator.Age;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -31,13 +33,14 @@ private Long Id;
 private IdDocumentType documentType;
 
 @Column(name="Document_No")
-@NotNull(message="{NotNull}")
+@NotEmpty(message="{NotEmpty}")
 private String documentNo;
 
 @Column(name="Valid_Through")
 @NotNull(message="{NotNull}")
-@DateTimeFormat(pattern="MM/DD/YYYY")
-@Future(message="{Date.future}")
+@DateTimeFormat(pattern = "yyyy-MM-dd") //to enable conversion from text to date
+//@Future(message="{Date.future}")
+@Age(min=-1, message = "{Age.negative}")
 private LocalDate validThrough;
 
     @Transient

@@ -67,6 +67,19 @@ public class User implements Serializable {
     @JoinColumn(name = "Address_Id")
     private Address address;
 
+    public IdDocument getIdDocument() {
+        return idDocument;
+    }
+
+    public void setIdDocument(IdDocument idDocument) {
+        this.idDocument = idDocument;
+    }
+
+    @Valid
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name="IdDocument_Id")
+    private IdDocument idDocument;
+
     @Column(name = "Username", nullable = false, unique = true)
     @NotNull(message = "{NotNull}")
 //    @UniqueUsername(message = "{Unique.username}")

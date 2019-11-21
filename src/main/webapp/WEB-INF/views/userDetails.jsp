@@ -20,18 +20,18 @@
         <div class="col-md-4 col-md-offset-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Here are your membership data:</h3><%--<spring:message code="${login.pleaseSignin}"/>--%>
+                    <h5 class="panel-title">Here are your membership data:</h5><%--<spring:message code="${login.pleaseSignin}"/>--%>
                 </div>
-                <div class="panel-body">
-                    <div class="form-group">
+                <div class="btn btn-info logout">
+                    <h3>
                         <label id="name">Name: ${savedUser.firstName} ${savedUser.lastName}</label>
-                    </div>
-                    <div class="form-group">
+                    </h3>
+                    <h3>
                         <label id="savedUser.username">Username: ${savedUser.username}</label>
-                    </div>
+                    </h3>
                 </div>
                 <div class="panel-heading">
-                    <h4 class="panel-title">Please wait until an admin approves your membership request.</h4><%--<spring:message code="${login.pleaseSignin}"/>--%>
+                    <h5 class="panel-title">Please wait until an admin approves your membership request.</h5><%--<spring:message code="${login.pleaseSignin}"/>--%>
                 </div>
             </div>
         </div>
