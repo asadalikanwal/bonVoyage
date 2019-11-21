@@ -13,10 +13,7 @@ import java.io.Serializable;
 
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -56,6 +53,8 @@ public class Trip implements Serializable  {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	@ManyToOne
+	@JoinColumn(name="user_id")
 	private User user;
 
 	@NotNull

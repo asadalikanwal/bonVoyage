@@ -1,8 +1,10 @@
 package com.bonvoyage.service.impl;
 
+import java.awt.print.Pageable;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,10 +35,20 @@ public class TripServiceImpl implements TripService {
 	}
 
 	@Override
-	public List<Trip> findTripByOriginAndDest(String origin, String destination) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Trip> findTripByOriginAndDest(String origin) {
+
+		List<Trip> listD = tripRepository.findTripByOriginAndDest("%Miami%");
+
+		System.out.println("Size Past "+listD.size());
+
+		return  listD;
 	}
+
+//	@Override
+//	public List<Trip> findTripByOriginAndDest(String origin, String destination) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 	@Override
 	public List<Trip> listTripByLocalisation(String origin, String destination) {
@@ -52,8 +64,18 @@ public class TripServiceImpl implements TripService {
 
 	@Override
 	public List<Trip> lastTenTrip() {
-		//return tripRepository.lastTenTrip();
-		return null;
+		// List<Trip> lastTenTrip(Pageable pageable);
+		return tripRepository.lastTenTrip();
+	}
+
+	@Override
+	public List<Trip> findByUserId(long id) {
+		return (List<Trip>)tripRepository.findByUserId(id);
+	}
+
+	@Override
+	public List<Trip> AllTrip() {
+		return  (List<Trip>)tripRepository.findAll();
 	}
 
 }
