@@ -24,7 +24,7 @@ public interface TripRepository extends CrudRepository<Trip, Long>  {
     @Query("select t from Trip t")
     List<Trip> lastTenTrip();
 
-    @Query("select u from Trip u where u.user.id = :user_id")
+    @Query("select u from Trip u where u.driver.id = :user_id")
     List<Trip> findByUserId(@Param("user_id") long user_id);
 
 

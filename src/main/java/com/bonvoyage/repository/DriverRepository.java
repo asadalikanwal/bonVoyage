@@ -10,7 +10,14 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
-
+/**
+ * Class to hold address data.
+ *
+ * @author Ali M Ahmadi
+ * @author amahmadi@mum.edu
+ * @version 1.0
+ * @since 1.0
+ */
 @Repository
 public interface DriverRepository extends CrudRepository<Driver, Long> {
 //    @Query("update Driver d set d.car_id = :carId where d.id = :id ")

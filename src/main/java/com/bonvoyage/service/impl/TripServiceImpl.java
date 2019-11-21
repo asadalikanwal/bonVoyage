@@ -58,8 +58,7 @@ public class TripServiceImpl implements TripService {
 
 	@Override
 	public Trip findTripById(Long tripId) {
-		// TODO Auto-generated method stub
-		return null;
+		return tripRepository.findOne(tripId);
 	}
 
 	@Override

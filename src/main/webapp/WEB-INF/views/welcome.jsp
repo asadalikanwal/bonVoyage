@@ -2,7 +2,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+<%@ taglib prefix="Spring" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
 <html>
@@ -59,10 +59,14 @@
 
 
     <c:forEach items="${listLastTentrip}" var="trips">
+        <spring:url value="/joinTrip" var="joinTrip">
+
+            <spring:param value="${trips.tripId}" name="tripId"/>
+        </spring:url>
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">${trips.origin} To ${trips.destination}</h5>
-                <a href="#" class="btn btn-info">JOIN TRIP</a>
+                <a href="${joinTrip}" class="btn btn-info">JOIN TRIP</a>
             </div>
         </div>
 

@@ -2,13 +2,13 @@ package com.bonvoyage.domain;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Set;
 
 import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.bonvoyage.validator.UniqueUsername;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -88,6 +88,10 @@ public class User implements Serializable {
     @Column(name = "User_Role", columnDefinition = "varchar(20) default 'NONE'")
     @Enumerated(EnumType.STRING)
     private UserRole userRole;
+
+
+    @ManyToMany(mappedBy = "passengers")
+    private Set<Trip> trips;
 
     public Long getId() {
         return id;
@@ -199,5 +203,13 @@ public class User implements Serializable {
 
     public void setNoOfRatings(long noOfRatings) {
         this.noOfRatings = noOfRatings;
+    }
+
+    public Set<Trip> getTrip() {
+        return trips;
+    }
+
+    public void setTrip(Set<Trip> trips) {
+        this.trips = trips;
     }
 }
