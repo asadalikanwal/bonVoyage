@@ -29,9 +29,6 @@
         <div class="row justify-content-center align-items-center">
             <form:form modelAttribute="searchTrip" action="search_Trip" method="post" class="form-inline">
 
-
-
-
                 <div class="form-group mb-2">
                     <span class="glyphicon glyphicon-map-marker"></span>
                     <form:input path="origin_search" type="text" class="form-control" id="origin_search" placeholder="Origin"/>
@@ -52,7 +49,6 @@
         </div>
     </div>
 
-
     <div id="map">
     </div>
     <div style="margin-top:10px;"></div>
@@ -65,10 +61,31 @@
 
             <h5 class="card-title">From ${trips.origin} To ${trips.destination}
             </h5>
-<%--            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>--%>
 
+            <c:if test="${trips.status eq 'posted'}">
+               <a href="#" class="btn btn-info">
+                   <button type="button" class="btn btn-info">
+                       START TRIP
+                   </button>
+               </a>
+            </c:if>
 
-            <a href="#" class="btn btn-info">JOIN TRIP</a>
+            <c:if test="${trips.status eq 'started'}">
+                <a href="#" class="btn btn-info">
+                    <button type="button">
+                        CANCEL TRIP
+                    </button>
+                </a>
+            </c:if>
+
+            <c:if test="${trips.status eq 'finish'}">
+                <a href="#" class="btn btn-info">
+                   <button type="button">
+                      FINISH
+                   </button>
+                </a>
+            </c:if>
+
         </div>
     </div>
      <div style="margin-top:10px;"></div>
@@ -89,41 +106,62 @@
 
 <script>
 
+    function updateTrip(){
+    //     $.ajax({
+    //         type: "patch",
+    //         url: "/bonVoyaga/updateTrip",
+    //         data: "1",
+    //
+    //         success: function (data) {// returns data from the back end for processing
+    //         if(data){
+    //             Alert ("upload success! ");
+    //         }else{
+    //             Alert ("upload failed! ");
+    //         }
+    //     },
+    //     error: function (err) {// submission error
+    //             console.log("Error Message "+JSON. stringify (err))
+    //         //$(" msg"). HTML (JSON. stringify (err));// Type out response information
+    //         Alert ("server no response");
+    //     }
+    // });
 
-    var alltripList = eval(${listCurrentUserTripjs});
+    }
 
-    var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 10,
-        center: new google.maps.LatLng(-33.92, 151.25),
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    });
+    <%--var alltripList = eval(${listCurrentUserTripjs});--%>
 
-    var infowindow = new google.maps.InfoWindow();
+    <%--var map = new google.maps.Map(document.getElementById('map'), {--%>
+    <%--    zoom: 10,--%>
+    <%--    center: new google.maps.LatLng(-33.92, 151.25),--%>
+    <%--    mapTypeId: google.maps.MapTypeId.ROADMAP--%>
+    <%--});--%>
 
-    var marker, i;
+    <%--var infowindow = new google.maps.InfoWindow();--%>
 
-
-    $.each(alltripList, function (index, listTrip) {
-
-        console.log( "Lat Update "+listTrip.destinationLng +" Lng Update "+listTrip.destinationLat);
-        marker = new google.maps.Marker({
-            position: new google.maps.LatLng(listTrip.destinationLng,listTrip.destinationLat),
-            map: map
-        });
-
-        google.maps.event.addListener(marker, 'click', (function(marker, i) {
-            return function() {
-                // infowindow.setContent(locations[i][0]);
-                infowindow.open(map, marker);
-            }
-        })(marker, index));
-
-    });
+    <%--var marker, i;--%>
 
 
+    <%--$.each(alltripList, function (index, listTrip) {--%>
+
+    <%--    console.log( "Lat Update "+listTrip.destinationLng +" Lng Update "+listTrip.destinationLat);--%>
+    <%--    marker = new google.maps.Marker({--%>
+    <%--        position: new google.maps.LatLng(listTrip.destinationLng,listTrip.destinationLat),--%>
+    <%--        map: map--%>
+    <%--    });--%>
+
+    <%--    google.maps.event.addListener(marker, 'click', (function(marker, i) {--%>
+    <%--        return function() {--%>
+    <%--            // infowindow.setContent(locations[i][0]);--%>
+    <%--            infowindow.open(map, marker);--%>
+    <%--        }--%>
+    <%--    })(marker, index));--%>
+
+    <%--});--%>
 
 
-   /* var locations = [
+
+
+   var locations = [
         ['Bondi Beach', -74.0059728, 40.7127753, 4],
         ['Coogee Beach', -33.923036, 151.259052, 5],
         ['Cronulla Beach', -34.028249, 151.157507, 3],
@@ -154,7 +192,7 @@
             }
         })(marker, i));
     }
-    */
+
 
 
 
