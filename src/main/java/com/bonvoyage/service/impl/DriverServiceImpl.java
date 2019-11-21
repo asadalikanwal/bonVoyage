@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class DriverServiceImpl implements DriverService {
@@ -38,6 +40,12 @@ public class DriverServiceImpl implements DriverService {
     public void setCarId(int id, int carId) {
 //        driverRepository.setCarId(id, carId);
     }
+
+    @Override
+    public List<Driver> findUsersByRole(Boolean isDriverApproved) {
+        return driverRepository.findUsersByRole(isDriverApproved);
+    }
+
 
 
 }

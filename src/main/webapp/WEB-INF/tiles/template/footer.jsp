@@ -1,1 +1,1 @@
-<p>&copy; Bon Voyage 2019</p>
+<p>&copy; Bon Voyage 2019 <span style="float: right">Design and developed by <strong style="color:#000">AAAJ</strong> team</span></p>

@@ -3,6 +3,7 @@ package com.bonvoyage.controller;
 import com.bonvoyage.domain.User;
 import com.bonvoyage.domain.UserRole;
 import com.bonvoyage.repository.UserRepository;
+import com.bonvoyage.service.DriverService;
 import com.bonvoyage.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,9 +26,14 @@ public class AdminController {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    DriverService driverService;
+
     @GetMapping(value = "/approval")
     public String adminApproval(@ModelAttribute("user") User user, Model model) {
-        model.addAttribute("users", userService.findUsersByRole(UserRole.ROLE_NONE));
+        System.out.println("Users" + driverService.findUsersByRole(false));
+        model.addAttribute("usersRider", userService.findUsersByRole(UserRole.ROLE_NONE));
+        model.addAttribute("usersDriver", driverService.findUsersByRole(false));
         return "/admin";
     }
 

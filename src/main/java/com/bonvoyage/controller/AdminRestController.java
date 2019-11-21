@@ -1,9 +1,11 @@
 package com.bonvoyage.controller;
 
+import com.bonvoyage.domain.Driver;
 import com.bonvoyage.domain.User;
 import com.bonvoyage.domain.UserRole;
 import com.bonvoyage.exception.UserNotFoundException;
 import com.bonvoyage.repository.UserRepository;
+import com.bonvoyage.service.DriverService;
 import com.bonvoyage.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +18,9 @@ import javax.servlet.http.HttpServletRequest;
 public class AdminRestController {
     @Autowired
     UserService userService;
+
+    @Autowired
+    DriverService driverService;
 
     @Autowired
     UserRepository userRepository;
@@ -34,6 +39,30 @@ public class AdminRestController {
         System.out.println("Got the user _____________ : " + user.getUserRole());
         userService.saveUser(user);
         return user;
+    }
+
+
+    @RequestMapping(value = "/updateDriver/{userId}", method = RequestMethod.GET)
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
+    public Driver addDriver(@PathVariable String userId) {
+        System.out.println("User Update from Admin controller ________");
+        Long id = Long.parseLong(userId);
+        Driver driver = driverService.findOne(id);
+        if(driver == null) {
+            throw new IllegalArgumentException(new UserNotFoundException(userId, null));
+        }
+        System.out.println("Got the user _____________ : " + driver.isDriverApproved());
+        driver.setDriverApproved(true);
+        System.out.println("Got the user _____________ : " + driver.isDriverApproved());
+        driverService.save(driver);
+
+        User user = userService.findUserById(driver.getUserID());
+        if(user == null) {
+            throw new IllegalArgumentException(new UserNotFoundException(userId, null));
+        }
+        user.setUserRole(UserRole.ROLE_DRIVER);
+        userService.saveUser(user);
+        return driver;
     }
 
     @ExceptionHandler(IllegalArgumentException.class)

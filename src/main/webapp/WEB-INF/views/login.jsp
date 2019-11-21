@@ -3,16 +3,23 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="security"
            uri="http://www.springframework.org/security/tags" %>
-<section>
+
+<style>
+    .panel-default{
+        width: 379px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+</style>
+    <div class="container">
     <div class="jumbotron">
-        <div class="container">
             <h1>Welcome back!!</h1> <%--<spring:message code="${login.mainLine}"/>--%>
         </div>
     </div>
-</section>
 <div class="container">
     <div class="row">
-        <div class="col-md-4 col-md-offset-4">
+        <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Please sign in</h3><%--<spring:message code="${login.pleaseSignin}"/>--%>
@@ -36,11 +43,11 @@
                         <security:csrfInput/>
                         <fieldset>
                             <div class="form-group">
-                                <input class="form:input-large" placeholder="User Name"
+                                <input class="form-control" placeholder="User Name"
                                        id="username" name="username" type="text"/>
                             </div>
                             <div class="form-group">
-                                <input class=" form:input-large" placeholder="Password"
+                                <input class="form-control" placeholder="Password"
                                        id="password" name="password" type="password"/>
                             </div>
                             <input class="btn btn-lg btn-success btn-mini" type="submit"
