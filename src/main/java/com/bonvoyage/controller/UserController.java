@@ -4,6 +4,7 @@ import com.bonvoyage.domain.User;
 import com.bonvoyage.domain.UserRole;
 import com.bonvoyage.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,16 +26,16 @@ public class UserController {
 
     @GetMapping(value = "/signup")
     public String startSignupProcess(@ModelAttribute("newUser") User user) {
-        return "signup";
+        return "/signup";
     }
 
     @PostMapping(value = "/signup")
     public String createUser(@Valid @ModelAttribute("newUser") User userToCreate, BindingResult result, RedirectAttributes redirectAttributes) {
         if (result.hasErrors())
-            return "signup";
+            return "/signup";
 
 //        userToCreate.setPassword(passwordEncoder.encode(userToCreate.getPassword()));
-        userToCreate.setUserRole(UserRole.NONE);
+        userToCreate.setUserRole(UserRole.ROLE_NONE);
         userToCreate.setEnabled(true);
         userService.saveUser(userToCreate);
 //        redirectAttributes.addFlashAttribute("savedUser", userToCreate);
@@ -46,17 +47,18 @@ public class UserController {
         return "userDetails";
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'DRIVER', 'USER', 'NONE')")
     @GetMapping(value = "/updateUser/{username}")
     public String updateUserData(@ModelAttribute("userToUpdate") User user, @PathVariable("username") String userName, Model model) {
         model.addAttribute("userToUpdate", userService.findUserByUsername(userName));
-        return "updateUser";
+        return "/updateUser";
     }
 
     @PutMapping(value = "/updateUser/{username}")
     public String updateUserData(@Valid @PathVariable("username") String userName, @ModelAttribute("userToUpdate") User user,
                                  BindingResult result, RedirectAttributes redirectAttributes) {
         if (result.hasErrors())
-            return "updateUser";
+            return "/updateUser";
         userService.saveUser(user);
         redirectAttributes.addFlashAttribute("savedUser");
         return "redirect:/success";
@@ -64,7 +66,7 @@ public class UserController {
 
     @GetMapping(value = "/nonApproved")
     public String getNonApprovedUsers(Model model) {
-        model.addAttribute("listOfUsers", userService.findUsersByRole(UserRole.NONE));
-        return "awaitingApproval";
+        model.addAttribute("listOfUsers", userService.findUsersByRole(UserRole.ROLE_NONE));
+        return "/awaitingApproval";
     }
 }

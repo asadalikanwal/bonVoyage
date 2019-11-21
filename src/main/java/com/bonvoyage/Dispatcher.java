@@ -50,7 +50,7 @@ public class Dispatcher extends WebMvcConfigurerAdapter {
     public void addInterceptors(InterceptorRegistry registry) 
     {
       registry.addInterceptor(new NoticeInterceptor())
-              .addPathPatterns("/**");
+              .addPathPatterns("/login");
     }
 
     @Bean(name = "messageSource")

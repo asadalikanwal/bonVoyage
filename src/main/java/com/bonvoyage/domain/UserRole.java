@@ -9,5 +9,5 @@ package com.bonvoyage.domain;
 	 *
 	 */
 public enum UserRole {
-    ADMIN, RIDER, DRIVER, NONE;
+    ROLE_ADMIN, ROLE_RIDER, ROLE_DRIVER, ROLE_NONE;
 }

@@ -30,7 +30,7 @@ public class AdminRestController {
             throw new IllegalArgumentException(new UserNotFoundException(userId, null));
         }
         System.out.println("Got the user _____________ : " + user.getUserRole());
-        user.setUserRole(UserRole.RIDER);
+        user.setUserRole(UserRole.ROLE_RIDER);
         System.out.println("Got the user _____________ : " + user.getUserRole());
         userService.saveUser(user);
         return user;
