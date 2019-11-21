@@ -98,8 +98,9 @@
                                                 <button style="text-decoration: none;" class="btn btn-link"
                                                         data-toggle="collapse" data-target="#collapseOne-d${user.id}"
                                                         aria-expanded="true" aria-controls="collapseOne">
-                                                        <%--                                                        ${user.firstName} ${user.lastName}--%>
-                                                        ${user.id} - <span
+
+                                                ${user.user.firstName} ${user.user.lastName}
+        - <span
                                                         style="color: #ccc; text-decoration: none;">(Click here for user details)</span>
                                                 </button>
 
@@ -109,14 +110,15 @@
                                         <div id="collapseOne-d${user.id}" class="collapse" aria-labelledby="headingOne"
                                              data-parent="#accordion">
                                             <div class="card-body">
-                                                <p><strong>Id:</strong> ${user.id}</p>
-                                                <p><strong>Driver Expiration
-                                                    Date:</strong> ${user.drivingExpirationDate}</p>
-                                                    <%--                                                <p><strong>Last name:</strong> ${user.lastName}</p>--%>
-                                                    <%--                                                <p><strong>Email:</strong> ${user.email}</p>--%>
+                                                <p><strong>Email:</strong> ${user.user.email}</p>
+                                                <p><strong>Driver Expiration Date:</strong> ${user.drivingExpirationDate}</p>
+                                                <p><strong>Licence:</strong> ${user.drivingLicenseNo}</p>
+                                                <p><strong>Car Modal:</strong> ${user.car.model}</p>
+                                                <p><strong>Car Manufacturer:</strong> ${user.car.manufacturer}</p>
+                                                <p><strong>Car Plate No:</strong> ${user.car.plateNo}</p>
 
-                                                <a class="btn btn-success approve-driver" data-userid="${user.id}"
-                                                   style="color: #fff">Approve
+
+                                                <a class="btn btn-success approve-driver" data-userid="${user.id}" style="color: #fff">Approve
                                                 </a>
                                                 <button type="button" class="btn btn-link" data-toggle="collapse"
                                                         data-target="#collapseOne-d ${user.id}">Close

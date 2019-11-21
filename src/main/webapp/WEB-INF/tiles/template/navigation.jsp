@@ -25,6 +25,16 @@
     </security:authorize>
 </li>
 
+</li>
+<li>
+    <security:authorize access="hasAnyRole('ADMIN', 'DRIVER')">
+    <a href="<spring:url value="/driver_Trip" />">
+        <button type="button" class="btn btn-info">
+            MY TRIP
+        </button>
+    </a>
+    </security:authorize>
+</li>
 <li>
     <security:authorize access="hasRole('RIDER')">
         <a href="<spring:url value="/registerDriver" />">
@@ -33,5 +43,4 @@
             </button>
         </a>
     </security:authorize>
-
 </li>
