@@ -36,6 +36,16 @@
         .logout{
             background: #19899b !important;
         }
+
+        .footer{
+            margin: 20px 0;
+            border-top: 1px dashed #ccc;
+        }
+
+        .footer p{
+            margin: 20px 0;
+
+        }
     </style>
 
 </head>
