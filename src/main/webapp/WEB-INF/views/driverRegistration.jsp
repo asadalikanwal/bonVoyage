@@ -38,13 +38,15 @@
 
                         <fieldset>
                             <div class="form-group">
-								License Number:
-                                <form:input class="form:input-large" placeholder="License Number" path="drivingLicenseNo" type="text"/>
+                                License Number:
+                                <form:input class="form:input-large" placeholder="License Number"
+                                            path="drivingLicenseNo" type="text"/>
                                 <form:errors class="alert alert-danger" path="drivingLicenseNo"/>
                             </div>
                             <div class="form-group">
-								License Expiration Date:
-                                <form:input class=" form:input-large" path="drivingExpirationDate" placeholder="mm-dd-yyyy" type="text"/>
+                                License Expiration Date:
+                                <form:input class=" form:input-large" path="drivingExpirationDate"
+                                            placeholder="mm-dd-yyyy" type="text"/>
                                 <form:errors class="alert alert-danger" path="drivingExpirationDate"/>
                             </div>
 

@@ -7,37 +7,19 @@
     </a>
 </li>
 
-<%-- <li>
-<a href="<spring:url value="/products/" />">
-   <button type="button"  class="btn btn-info">
-     Products
-   </button>
-</a>
-
-</li> --%>
-
-
-<%-- <li>
-  <a href="<spring:url value="/products/add" />">
-
-  <button type="button" class="btn btn-info">
-       Add Product
-   </button>
-  </a>
-</li> --%>
-
-<%-- <li>
-  <a href="<spring:url value="/login/" />">
-    <button type="button" class="btn btn-info">
-        login
-    </button>
-  </a>
-
-</li> --%>
 <li>
     <a href="<spring:url value="/addTrip" />">
         <button type="button" class="btn btn-info">
-            ADDTRIP
+            ADD TRIP
+        </button>
+    </a>
+
+</li>
+
+<li>
+    <a href="<spring:url value="/registerDriver" />">
+        <button type="button" class="btn btn-info">
+            BECOME DRIVER
         </button>
     </a>
 

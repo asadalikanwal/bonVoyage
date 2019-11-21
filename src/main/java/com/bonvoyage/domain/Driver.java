@@ -1,6 +1,5 @@
 package com.bonvoyage.domain;
 
-import com.sun.xml.internal.ws.api.FeatureListValidatorAnnotation;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
