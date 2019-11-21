@@ -4,6 +4,7 @@ import com.bonvoyage.domain.User;
 import com.bonvoyage.domain.UserRole;
 import com.bonvoyage.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,7 +35,7 @@ public class UserController {
             return "signup";
 
 //        userToCreate.setPassword(passwordEncoder.encode(userToCreate.getPassword()));
-        userToCreate.setUserRole(UserRole.NONE);
+        userToCreate.setUserRole(UserRole.ROLE_NONE);
         userToCreate.setEnabled(true);
         userService.saveUser(userToCreate);
 //        redirectAttributes.addFlashAttribute("savedUser", userToCreate);
@@ -46,6 +47,7 @@ public class UserController {
         return "userDetails";
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'DRIVER', 'USER', 'NONE')")
     @GetMapping(value = "/updateUser/{username}")
     public String updateUserData(@ModelAttribute("userToUpdate") User user, @PathVariable("username") String userName, Model model) {
         model.addAttribute("userToUpdate", userService.findUserByUsername(userName));
@@ -64,7 +66,7 @@ public class UserController {
 
     @GetMapping(value = "/nonApproved")
     public String getNonApprovedUsers(Model model) {
-        model.addAttribute("listOfUsers", userService.findUsersByRole(UserRole.NONE));
+        model.addAttribute("listOfUsers", userService.findUsersByRole(UserRole.ROLE_NONE));
         return "awaitingApproval";
     }
 }

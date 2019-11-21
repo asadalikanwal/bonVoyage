@@ -27,8 +27,8 @@ public class AdminController {
 
     @GetMapping(value = "/approval")
     public String adminApproval(@ModelAttribute("user") User user, Model model) {
-        model.addAttribute("users", userService.findUsersByRole(UserRole.NONE));
-        return "admin";
+        model.addAttribute("users", userService.findUsersByRole(UserRole.ROLE_NONE));
+        return "/admin";
     }
 
     @PostMapping(value = "/approval")

@@ -28,9 +28,13 @@
             text-align: left;
             float: left;
             color: #fff;
-            background: #19899b!important;
+            /*background: #19899b !important;*/
             margin-right: 10px;
             border-radius: 10px;
+        }
+
+        .logout{
+            background: #19899b !important;
         }
     </style>
 
@@ -59,9 +63,9 @@
                         </a>
                     </security:authorize>
                     <security:authorize access="isAuthenticated()">
-                        <span class="welcome">Welcome, <security:authentication property="principal.username" /></span>
-                        <a href="<spring:url value="/logout" />" class="btn btn-info">
-                                LOG OUT
+                        <span class="welcome">Welcome, <security:authentication property="principal.username"/>!</span>
+                        <a href="<spring:url value="/dologout" />" class="btn btn-info logout">
+                            LOG OUT
                         </a>
                     </security:authorize>
                 </div>
