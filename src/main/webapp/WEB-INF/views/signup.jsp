@@ -12,7 +12,7 @@
 </style>
 <div class="container">
     <div class="jumbotron">
-        <h1>Welcome to our community!!</h1> <%--<spring:message code="${login.mainLine}"/>--%>
+        <h1>Welcome to the Bon Voyage community :)</h1> <%--<spring:message code="${login.mainLine}"/>--%>
     </div>
 </div>
 <div class="container">
@@ -67,15 +67,15 @@
                                         <br/><form:errors class="alert alert-danger" path="email"/>
                                     </td>
                                 </tr>
-                                    <%--                                <tr>--%>
-                                    <%--                                    <td class="form-group" valign="top">--%>
-                                    <%--                                        <label for="photo">Photo:</label>--%>
-                                    <%--                                    </td>--%>
-                                    <%--                                    <td class="form-group" valign="top">--%>
-                                    <%--                                        <form:input class=" form:input-large" id="photo" path="photo"/>--%>
-                                    <%--                                        <br/><form:errors class="alert alert-danger" path="email"/>--%>
-                                    <%--                                    </td>--%>
-                                    <%--                                </tr>--%>
+<%--                                <tr>--%>
+<%--                                    <td class="form-group" valign="top">--%>
+<%--                                        <label for="photo">Photo:</label>--%>
+<%--                                    </td>--%>
+<%--                                    <td class="form-group" valign="top">--%>
+<%--                                        <form:input type="button" value="Upload my photo" class=" form:input-large" id="photo" path="photo"/>--%>
+<%--                                        <br/><form:errors class="alert alert-danger" path="photo"/>--%>
+<%--                                    </td>--%>
+<%--                                </tr>--%>
                                 <tr>
                                     <td class="form-group" valign="top">
                                         <label>Phone No:</label>
@@ -146,6 +146,44 @@
                                 </tr>
                                 <tr>
                                     <td class="form-group" valign="top">
+                                        <label>ID Document:</label>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="form-group" valign="top">
+                                        <label for="idDocument.documentType">Document type:</label>
+                                    </td>
+                                    <td class="form-group" valign="top">
+                                        <form:select class=" form:input-large" path="idDocument.documentType" id="idDocumentType">
+                                            <option value="STATE_ID">State ID</option>
+                                            <option value="DRIVER_LICENSE_OR_PERMIT">Driver licens/permit</option>
+                                            <option value="PASSPORT">Passport</option>
+                                            <option value="SSN">Social Security Number</option>
+                                        </form:select>
+                                        <br/><form:errors class="alert alert-danger" path="idDocument.documentType"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="form-group" valign="top">
+                                        <label for="idDocument.documentNo">Document No.:</label>
+                                    </td>
+                                    <td class="form-group" valign="top">
+                                        <form:input class=" form:input-large" id="idDocumentNo" path="idDocument.documentNo"/>
+                                        <br/><form:errors class="alert alert-danger" path="idDocument.documentNo"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="form-group" valign="top">
+                                        <label for="idDocument.validThrough">Valid through:</label>
+                                    </td>
+                                    <td class="form-group" valign="top">
+                                        <form:input class=" form:input-large" id="validThrough" path="idDocument.validThrough" type="date"/>
+                                        <br/><form:errors class="alert alert-danger" path="idDocument.validThrough"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="form-group" valign="top">
                                         <label for="username">Username:</label>
                                     </td>
                                     <td class="form-group" valign="top">
@@ -164,9 +202,8 @@
                                     </td>
                                 </tr>
                             </table>
-                                <%--                            <input id="userRole" name="userRole" type="hidden" value="NONE">--%>
                             <form:button class="btn btn-lg btn-success btn-mini"
-                                         type="submit">I'm ready for trips!</form:button>
+                                         type="submit">Join Bon Voyage!</form:button>
                         </fieldset>
                     </form:form>
                 </div>

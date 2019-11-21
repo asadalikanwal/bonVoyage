@@ -20,7 +20,7 @@ import java.util.Set;
  * @since 1.0
  */
 @Entity
-public class Driver implements Serializable{
+public class Driver implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -28,16 +28,16 @@ public class Driver implements Serializable{
     private long id;
 
     @NotBlank
-    @Size(min =9, max = 9, message ="{Size.licenseNo.validation}")
+    @Size(min = 9, max = 9, message = "{Size.licenseNo.validation}")
     private String drivingLicenseNo;
 
     @NotNull
-    @DateTimeFormat(pattern= "MM-dd-yyyy")
+    @DateTimeFormat(pattern = "MM-dd-yyyy")
     private LocalDate drivingExpirationDate;
 
     private boolean isDriverApproved;
 
-    @DateTimeFormat(pattern= "MM-dd-yyyy")
+    @DateTimeFormat(pattern = "MM-dd-yyyy")
     private LocalDate driverApprovalDate;
 
     @OneToOne
@@ -54,9 +54,8 @@ public class Driver implements Serializable{
     private Set<Trip> trips;
 
 
-
-
-    public Driver(){}
+    public Driver() {
+    }
 
     public Driver(String drivingLicenseNo, LocalDate drivingExpirationDate) {
         this.drivingLicenseNo = drivingLicenseNo;

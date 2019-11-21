@@ -64,7 +64,7 @@
 
             <c:if test="${trips.status eq 'posted'}">
                <a href="#" class="btn btn-info">
-                   <button type="button" class="btn btn-info">
+                   <button type="button" class="btn btn-info" onclick="updateTrip()">
                        START TRIP
                    </button>
                </a>
