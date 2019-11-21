@@ -54,7 +54,8 @@ public class DriverController {
 
     @RequestMapping(value = "/driverRegistered", method = RequestMethod.GET)
     public String showSuccessRegistration(){
-        return "driverRegistered";
+
+        return "/driverRegistered";
     }
 
 
