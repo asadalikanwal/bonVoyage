@@ -12,11 +12,10 @@
 </head>
 <body>
 
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <h1>Register Driver</h1>
+            <h4>Register Driver</h4>
         </div>
     </div>
     <div class="row justify-content-center">
