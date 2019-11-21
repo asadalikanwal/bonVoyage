@@ -34,14 +34,13 @@ public class DriverController {
 
     @RequestMapping(value = "/registerDriver", method = RequestMethod.GET)
     public String registerDriver(@ModelAttribute("newDriver") Driver newDriver){
-
-        return "driverRegistration";
+        return "/driverRegistration";
     }
 
     @RequestMapping(value = "/registerDriver", method = RequestMethod.POST)
     public String saveDriver(@Valid @ModelAttribute("newDriver") Driver newDriver, BindingResult result, RedirectAttributes redirectAttributes, Principal principal){
         if(result.hasErrors()){
-            return "driverRegistration";
+            return "/driverRegistration";
         }
 //        Object obj = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String name = principal.getName();
@@ -50,7 +49,7 @@ public class DriverController {
         driverService.save(newDriver);
 
         redirectAttributes.addFlashAttribute("newDriver",newDriver);
-        return "redirect:driverRegistered";
+        return "redirect:/driverRegistered";
     }
 
     @RequestMapping(value = "/driverRegistered", method = RequestMethod.GET)
