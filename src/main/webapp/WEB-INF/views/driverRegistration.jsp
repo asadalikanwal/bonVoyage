@@ -7,18 +7,14 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <link rel="stylesheet"
-          href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+
     <title>Products</title>
 </head>
 <body>
-<section>
-    <div class="jumbotron">
-        <div class="container">
-            <h1>Register Driver</h1>
-        </div>
-    </div>
-</section>
+<div class="col-md-center">
+    <h1>Register Driver</h1>
+</div>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
