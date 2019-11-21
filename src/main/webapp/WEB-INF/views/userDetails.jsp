@@ -20,7 +20,7 @@
         <div class="col-md-4 col-md-offset-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Here are your membership data</h3><%--<spring:message code="${login.pleaseSignin}"/>--%>
+                    <h3 class="panel-title">Here are your membership data:</h3><%--<spring:message code="${login.pleaseSignin}"/>--%>
                 </div>
                 <div class="panel-body">
                     <div class="form-group">
