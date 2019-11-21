@@ -17,7 +17,15 @@ create table location( ID int primary key AUTO_INCREMENT NOT NULL,
 						state varchar(25),
  						zip varchar(25)
 					);
+
 					
 ALTER TABLE employee ADD  COLUMN addressId BIGINT;
 ALTER TABLE employee ADD CONSTRAINT ADDRESSREL FOREIGN KEY (addressId) REFERENCES location (id);
+
+create table location( ID int primary key AUTO_INCREMENT NOT NULL,
+						street varchar(25),
+						city varchar(25),
+						state varchar(25),
+ 						zip varchar(25)
+					);
 					

@@ -16,12 +16,9 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     @Autowired
     UserRepository userRepository;
-    @Autowired
-    PasswordEncoder passwordEncoder;
 
     @Override
     public void saveUser(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
     }
 
