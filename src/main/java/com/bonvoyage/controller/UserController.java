@@ -34,35 +34,35 @@ public class UserController {
         if (result.hasErrors())
             return "/signup";
 
-//        userToCreate.setPassword(passwordEncoder.encode(userToCreate.getPassword()));
+        userToCreate.setPassword(passwordEncoder.encode(userToCreate.getPassword()));
         userToCreate.setUserRole(UserRole.ROLE_NONE);
         userToCreate.setEnabled(true);
         userService.saveUser(userToCreate);
-//        redirectAttributes.addFlashAttribute("savedUser", userToCreate);
+        redirectAttributes.addFlashAttribute("savedUser", userToCreate);
         return "redirect:/users/success";
     }
 
     @GetMapping(value = "/success")
     public String showCreatedUser() {
-        return "userDetails";
+        return "/userDetails";
     }
 
-    @PreAuthorize("hasAnyRole('ADMIN', 'DRIVER', 'USER', 'NONE')")
-    @GetMapping(value = "/updateUser/{username}")
-    public String updateUserData(@ModelAttribute("userToUpdate") User user, @PathVariable("username") String userName, Model model) {
-        model.addAttribute("userToUpdate", userService.findUserByUsername(userName));
-        return "/updateUser";
-    }
+//    @PreAuthorize("hasAnyRole('ADMIN', 'DRIVER', 'USER', 'NONE')")
+//    @GetMapping(value = "/updateUser/{username}")
+//    public String updateUserData(@ModelAttribute("userToUpdate") User user, @PathVariable("username") String userName, Model model) {
+//        model.addAttribute("userToUpdate", userService.findUserByUsername(userName));
+//        return "/updateUser";
+//    }
 
-    @PutMapping(value = "/updateUser/{username}")
-    public String updateUserData(@Valid @PathVariable("username") String userName, @ModelAttribute("userToUpdate") User user,
-                                 BindingResult result, RedirectAttributes redirectAttributes) {
-        if (result.hasErrors())
-            return "/updateUser";
-        userService.saveUser(user);
-        redirectAttributes.addFlashAttribute("savedUser");
-        return "redirect:/success";
-    }
+//    @PutMapping(value = "/updateUser/{username}")
+//    public String updateUserData(@Valid @PathVariable("username") String userName, @ModelAttribute("userToUpdate") User user,
+//                                 BindingResult result, RedirectAttributes redirectAttributes) {
+//        if (result.hasErrors())
+//            return "/updateUser";
+//        userService.saveUser(user);
+//        redirectAttributes.addFlashAttribute("savedUser");
+//        return "redirect:/success";
+//    }
 
     @GetMapping(value = "/nonApproved")
     public String getNonApprovedUsers(Model model) {

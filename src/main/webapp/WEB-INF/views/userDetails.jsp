@@ -20,7 +20,7 @@
         <div class="col-md-4 col-md-offset-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Here are your main membership data</h3><%--<spring:message code="${login.pleaseSignin}"/>--%>
+                    <h3 class="panel-title">Here are your membership data</h3><%--<spring:message code="${login.pleaseSignin}"/>--%>
                 </div>
                 <div class="panel-body">
                     <div class="form-group">
@@ -29,8 +29,9 @@
                     <div class="form-group">
                         <label id="savedUser.username">Username: ${savedUser.username}</label>
                     </div>
-                    <a href="../welcome" class="btn btn-lg btn-success btn-mini">Start looking for trips</a> |
-                    <a href="<spring:url value='/updateUser/${savedUser.username}'/>" class="btn btn-lg btn-success btn-mini">Change my data</a>
+                </div>
+                <div class="panel-heading">
+                    <h4 class="panel-title">Please wait until an admin approves your membership request.</h4><%--<spring:message code="${login.pleaseSignin}"/>--%>
                 </div>
             </div>
         </div>

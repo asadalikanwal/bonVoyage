@@ -17,6 +17,7 @@ public interface DriverRepository extends CrudRepository<Driver, Long> {
 //    public void setCarId(@Param("id") int id, @Param("carId") int carId);
 
     String USERS_BY_ROLE = "select u from Driver u where u.isDriverApproved = :isDriverApproved";
+
     @Query(value = USERS_BY_ROLE)
     List<Driver> findUsersByRole(@Param("isDriverApproved") Boolean isDriverApproved);
 }

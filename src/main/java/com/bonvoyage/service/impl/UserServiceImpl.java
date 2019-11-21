@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> findAllUsers() {
-        return (List<User>)userRepository.findAll();
+        return (List<User>) userRepository.findAll();
     }
 
     @Override
@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean usernameExists(String username) {
-        return findUserByUsername(username)!=null;
+        return findUserByUsername(username) != null;
     }
 
     public User findUserByUsername(String username) {

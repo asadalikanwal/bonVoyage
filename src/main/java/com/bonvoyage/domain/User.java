@@ -52,8 +52,10 @@ public class User implements Serializable {
     @Email(message = "{Email}")
     private String email;
 
-    @Transient
-    private MultipartFile photo;
+//    @Transient
+//    @Lob
+//    @NotNull(message="{NotNull}")
+//    private MultipartFile photo;
 
     @Valid
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -129,13 +131,13 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public MultipartFile getPhoto() {
-        return photo;
-    }
+//    public MultipartFile getPhoto() {
+//        return photo;
+//    }
 
-    public void setPhoto(MultipartFile photo) {
-        this.photo = photo;
-    }
+//    public void setPhoto(MultipartFile photo) {
+//        this.photo = photo;
+//    }
 
     public Phone getPhoneNo() {
         return phoneNo;
