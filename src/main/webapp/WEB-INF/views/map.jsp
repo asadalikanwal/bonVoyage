@@ -107,11 +107,29 @@
 
 
 <div class="container">
+
+
+
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Some text in the Modal..</p>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
     <div class="shadow-lg p-3 mb-5 bg-white rounded">
         <div class="row justify-content-center align-items-center">
-
-            <%--<form:form modelAttribute="newTrip" method="post" action="/addTrip" class="form-inline">
-             --%>
 
             <form:form modelAttribute="newTrip" class="form-inline" method="post">
 
@@ -148,33 +166,43 @@
                 </div>
 
 
+<%--                <buttons type="submit" class="btn btn-info hideView" id="finishTrip">--%>
+<%--                    Add Trip--%>
+<%--                </button>--%>
+
                 <div id="next_step" class="text-center hideView">
-                    <button type="button" onclick="popupfee()">Process to Fee</button>
+                    <button class="btn btn-info" type="button" onclick="popupfee()">Process to Fee</button>
                 </div>
 
 
                 <div id="formInput" class="hideView">
                     <h3 align="center">One Last Step</h3>
-                    <p>
+
+                    <div class="form-group">
                         <label for="name"> Number of Rider: </label>
-                        <form:input type="number" path="numberPeople" id="numberPeople" min="1"/>
+                        <form:input type="number" path="numberPeople" id="numberPeople" min="1" class="form-control"/>
                         <form:errors path="numberPeople" cssClass="text-danger"/>
-                    </p>
-                    <p>
+                        <br>
+                    </div>
+
+                    <div class="form-group">
                         <label for="description"> Fee: </label>
                         <form:radiobutton path="PaymentType" value="1" id="gaz_choice" onclick="showHideFee()"/>Gas
                         <form:radiobutton path="PaymentType" value="2" id="money_choice" onclick="showHideFee()"/>Money
                         <form:errors path="PaymentType" cssClass="text-danger"/>
 
-                    </p>
 
-                    <p>
+                    </div>
+                    <div class="form-group">
                         <form:input path="fees" type="number" placeholder="Put number of Gallon" class="hideView"
-                                    id="fee_gaz" min="1"/>
+                                    id="fee_gaz" min="1" />
                         <form:errors path="fees" cssClass="text-danger"/>
-                    </p>
+                        <br>
+                    </div>
 
                     <input type="submit" value="Add Trip" class="hideView" id="finishTrip"/>
+
+
 
 
                     <h4 align="center">

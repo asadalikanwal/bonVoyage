@@ -105,26 +105,30 @@
 
 
 <script>
-
+    var contextRoot = "/" + window.location.pathname.split('/')[1];
+//
     function updateTrip(){
-    //     $.ajax({
-    //         type: "patch",
-    //         url: "/bonVoyaga/updateTrip",
-    //         data: "1",
-    //
-    //         success: function (data) {// returns data from the back end for processing
-    //         if(data){
-    //             Alert ("upload success! ");
-    //         }else{
-    //             Alert ("upload failed! ");
-    //         }
-    //     },
-    //     error: function (err) {// submission error
-    //             console.log("Error Message "+JSON. stringify (err))
-    //         //$(" msg"). HTML (JSON. stringify (err));// Type out response information
-    //         Alert ("server no response");
-    //     }
-    // });
+        $.ajax({
+            type: "POST",
+            url: contextRoot+"/updateTrip",
+            dataType: "json",
+            data: "1",
+
+
+            success: function (data) {// returns data from the back end for processing
+            if(data){
+                console.log("Success Call");
+               // Alert ("upload success! ");
+            }else{
+                console.log("Error Call");
+            }
+        },
+        error: function (err) {// submission error
+                console.log("Error Message "+JSON. stringify (err))
+            //$(" msg"). HTML (JSON. stringify (err));// Type out response information
+           // Alert ("server no response");
+        }
+    });
 
     }
 
