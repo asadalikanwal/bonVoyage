@@ -73,7 +73,7 @@ public class TripController {
         newTrip.setStatus("posted");
         String name = principal.getName();
         User user   = userService.findUserByUsername(name);
-        newTrip.setUser(user);
+        newTrip.addPassenger(user);
         tripService.saveTripe(newTrip);
         return "redirect:/driver_Trip";
     }

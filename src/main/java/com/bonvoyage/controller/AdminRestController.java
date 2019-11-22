@@ -28,17 +28,19 @@ public class AdminRestController {
     @RequestMapping(value = "/updateUser/{userId}", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public User addItem(@PathVariable String userId) {
-        System.out.println("UUserRoleser Update from Admin controller ________");
-//        System.out.println("User Update from Admin controller ________");
+        System.out.println("______UUserRoleser Update from Admin controller ________");
+        System.out.println("_______User Update from Admin controller ________");
         Long id = Long.parseLong(userId);
         User user = userService.findUserById(id);
+        System.out.println("_______User  ________" + user);
         if (user == null) {
             throw new IllegalArgumentException(new UserNotFoundException(userId, null));
         }
-//        System.out.println("Got the user _____________ : " + user.getUserRole());
+        System.out.println("Got the user _____________ : " + user.getUserRole());
         user.setUserRole(UserRole.ROLE_RIDER);
-//        System.out.println("Got the user _____________ : " + user.getUserRole());
+        System.out.println("Got the user _____________ : " + user.getUserRole());
         userService.saveUser(user);
+//        userRepository.save(user);
         return user;
     }
 
