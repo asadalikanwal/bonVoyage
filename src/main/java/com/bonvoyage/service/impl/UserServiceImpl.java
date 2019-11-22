@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @PreAuthorize("hasAnyRole('ADMIN', 'DRIVER', 'USER', 'NONE')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DRIVER', 'RIDER', 'NONE')")
     public User findUserById(Long id) {
         return userRepository.findOne(id);
     }
@@ -43,7 +43,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @PreAuthorize("hasAnyRole('ADMIN', 'DRIVER', 'USER', 'NONE')")
     public boolean usernameExists(String username) {
         return findUserByUsername(username) != null;
     }

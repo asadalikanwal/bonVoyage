@@ -38,8 +38,8 @@ public class PasswordValidator implements ConstraintValidator<Password, String> 
 				hasLetters=true;
 			if (Character.isDigit(currentLetter))
 				hasDigits = true;
-			if (!(Character.isLetter(currentLetter) &&
-					Character.isDigit(currentLetter)) &&
+			if ((!Character.isLetter(currentLetter) &&
+					!Character.isDigit(currentLetter)) &&
 					currentLetter < 128)
 				hasSpecialSigns = true;
 		}

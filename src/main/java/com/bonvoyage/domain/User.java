@@ -11,10 +11,14 @@ import javax.validation.constraints.Size;
 import com.bonvoyage.validator.UniqueUsername;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.multipart.MultipartFile;
 import com.bonvoyage.validator.Age;
 import com.bonvoyage.validator.Password;
+
 
 /**
  * Class to hold and map user data at sign up and update. It is composed of two classes:
@@ -27,9 +31,9 @@ import com.bonvoyage.validator.Password;
  */
 @Entity
 public class User implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-//    @Column(name = "User_Id", updatable = false, nullable = false)
     private Long id;
 
     @Column(name = "First_Name")
@@ -82,15 +86,18 @@ public class User implements Serializable {
 
     @Column(name = "Username", nullable = false, unique = true)
     @NotNull(message = "{NotNull}")
-//    @UniqueUsername(message = "{Unique.username}")
+    @UniqueUsername(message = "{Unique.username}")
     @Size(min = 8, max = 20, message = "{Size.range}")
     private String username;
 
     @Column(name = "Password", nullable = false)
-    @NotNull(message = "{NotNull}")
-    @Size(min = 8, message = "{Size.min}")
-    @Password(message = "{Password}")
     private String password;
+
+    @Transient
+    @NotNull(message = "{NotNull}")
+    @Size(min = 8, max = 20, message = "{Size.range}")
+    @Password(message = "{Password}")
+    private String prePassword;
 
     private boolean enabled;
 
@@ -182,6 +189,16 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPrePassword() {
+        return prePassword;
+    }
+
+    public void setPrePassword(String prePassword) {
+        this.prePassword = prePassword;
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        this.setPassword(passwordEncoder.encode(prePassword));
     }
 
     public boolean isEnabled() {

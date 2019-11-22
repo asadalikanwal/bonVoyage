@@ -12,7 +12,7 @@
 </style>
 <div class="container">
     <div class="jumbotron">
-        <h1>Welcome to the Bon Voyage community :)</h1> <%--<spring:message code="${login.mainLine}"/>--%>
+        <h1><spring:message code="signup.mainLine"/></h1>
     </div>
 </div>
 <div class="container">
@@ -20,8 +20,8 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Please fill in your data to sign
-                        up</h3><%--<spring:message code="${login.pleaseSignin}"/>--%>
+                    <h3 class="panel-title"><spring:message code="signup.pleaseSignin"/>
+                        up</h3>
                 </div>
                 <div class="panel-body">
                     <spring:url value="/users/signup" var="action"/>
@@ -31,7 +31,7 @@
                             <table>
                                 <tr>
                                     <td class="form-group" width="150px" valign="top">
-                                        <label for="firstName">First name:</label>
+                                        <label for="firstName"><spring:message code="firstName"/>:</label>
                                     </td>
                                     <td width="80%">
                                         <form:input class="form:input-large" id="firstName" path="firstName"
@@ -41,7 +41,7 @@
                                 </tr>
                                 <tr>
                                     <td class="form-group" valign="top">
-                                        <label for="lastName">Last name:</label>
+                                        <label for="lastName"><spring:message code="lastName"/>:</label>
                                     </td>
                                     <td class="form-group" valign="top">
                                         <form:input class=" form:input-large" id="lastname" path="lastName"/>
@@ -50,7 +50,7 @@
                                 </tr>
                                 <tr>
                                     <td class="form-group" valign="top">
-                                        <label for="birthdate">Birthdate:</label>
+                                        <label for="birthdate"><spring:message code="birthdate"/>:</label>
                                     </td>
                                     <td class="form-group" valign="top">
                                         <form:input class=" form:input-large" id="birthdate" path="birthdate"
@@ -60,7 +60,7 @@
                                 </tr>
                                 <tr>
                                     <td class="form-group" valign="top">
-                                        <label for="email">Email:</label>
+                                        <label for="email"><spring:message code="email"/>:</label>
                                     </td>
                                     <td class="form-group" valign="top">
                                         <form:input class=" form:input-large" id="email" path="email"/>
@@ -78,7 +78,7 @@
 <%--                                </tr>--%>
                                 <tr>
                                     <td class="form-group" valign="top">
-                                        <label>Phone No:</label>
+                                        <label><spring:message code="phoneNo"/>:</label>
                                     </td>
                                     <td class="form-group" valign="top">
                                         <form:input class=" form:input-large" id="area" path="phoneNo.area"/>-
@@ -91,13 +91,13 @@
                                 </tr>
                                 <tr>
                                     <td class="form-group" valign="top">
-                                        <label>Address:</label>
+                                        <label><spring:message code="address"/>:</label>
                                     </td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td class="form-group" valign="top">
-                                        <label for="address.door">Door No:</label>
+                                        <label for="address.door"><spring:message code="address.door"/>:</label>
                                     </td>
                                     <td class="form-group" valign="top">
                                         <form:input class=" form:input-large" id="door" path="address.door"/>
@@ -106,7 +106,7 @@
                                 </tr>
                                 <tr>
                                     <td class="form-group" valign="top">
-                                        <label for="address.street">Street:</label>
+                                        <label for="address.street"><spring:message code="address.street"/>:</label>
                                     </td>
                                     <td class="form-group" valign="top">
                                         <form:input class=" form:input-large" id="street" path="address.street"/>
@@ -115,7 +115,7 @@
                                 </tr>
                                 <tr>
                                     <td class="form-group" valign="top">
-                                        <label for="address.city">City:</label>
+                                        <label for="address.city"><spring:message code="address.city"/>:</label>
                                     </td>
                                     <td class="form-group" valign="top">
                                         <form:input class=" form:input-large" id="city" path="address.city"/>
@@ -124,7 +124,7 @@
                                 </tr>
                                 <tr>
                                     <td class="form-group" valign="top">
-                                        <label for="address.state">State:</label>
+                                        <label for="address.state"><spring:message code="address.state"/>:</label>
                                     </td>
                                     <td class="form-group" valign="top">
                                         <form:input class=" form:input-large" id="state" path="address.state"/>
@@ -133,7 +133,7 @@
                                 </tr>
                                 <tr>
                                     <td class="form-group" valign="top">
-                                        <label>Zip Code:</label>
+                                        <label><spring:message code="address.zipCode"/>:</label>
                                     </td>
                                     <td class="form-group" valign="top">
                                         <form:input class=" form:input-large" id="state"
@@ -146,27 +146,27 @@
                                 </tr>
                                 <tr>
                                     <td class="form-group" valign="top">
-                                        <label>ID Document:</label>
+                                        <label><spring:message code="idDocument"/>:</label>
                                     </td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td class="form-group" valign="top">
-                                        <label for="idDocument.documentType">Document type:</label>
+                                        <label for="idDocument.documentType"><spring:message code="idDocument.documentType"/>:</label>
                                     </td>
                                     <td class="form-group" valign="top">
                                         <form:select class=" form:input-large" path="idDocument.documentType" id="idDocumentType">
-                                            <option value="STATE_ID">State ID</option>
-                                            <option value="DRIVER_LICENSE_OR_PERMIT">Driver licens/permit</option>
-                                            <option value="PASSPORT">Passport</option>
-                                            <option value="SSN">Social Security Number</option>
+                                            <option value="STATE_ID"><spring:message code="idDocument.documentType.stateID"/></option>
+                                            <option value="DRIVER_LICENSE_OR_PERMIT"><spring:message code="idDocument.documentType.dl"/></option>
+                                            <option value="PASSPORT"><spring:message code="idDocument.documentType.passport"/></option>
+                                            <option value="SSN"><spring:message code="idDocument.documentType.ssn"/></option>
                                         </form:select>
                                         <br/><form:errors class="alert alert-danger" path="idDocument.documentType"/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="form-group" valign="top">
-                                        <label for="idDocument.documentNo">Document No.:</label>
+                                        <label for="idDocument.documentNo"><spring:message code="idDocument.documentNo"/>:</label>
                                     </td>
                                     <td class="form-group" valign="top">
                                         <form:input class=" form:input-large" id="idDocumentNo" path="idDocument.documentNo"/>
@@ -175,7 +175,7 @@
                                 </tr>
                                 <tr>
                                     <td class="form-group" valign="top">
-                                        <label for="idDocument.validThrough">Valid through:</label>
+                                        <label for="idDocument.validThrough"><spring:message code="idDocument.validThrough"/>:</label>
                                     </td>
                                     <td class="form-group" valign="top">
                                         <form:input class=" form:input-large" id="validThrough" path="idDocument.validThrough" type="date"/>
@@ -184,7 +184,7 @@
                                 </tr>
                                 <tr>
                                     <td class="form-group" valign="top">
-                                        <label for="username">Username:</label>
+                                        <label for="username"><spring:message code="username"/>:</label>
                                     </td>
                                     <td class="form-group" valign="top">
                                         <form:input class=" form:input-large" id="username" path="username"/>
@@ -193,17 +193,17 @@
                                 </tr>
                                 <tr>
                                     <td class="form-group" valign="top">
-                                        <label for="password">Password:</label>
+                                        <label for="prePassword"><spring:message code="prePassword"/>:</label>
                                     </td>
                                     <td class="form-group" valign="top">
-                                        <form:input class=" form:input-large" id="password" path="password"
+                                        <form:input class=" form:input-large" id="prePassword" path="prePassword"
                                                     type="password"/>
-                                        <br/><form:errors class="alert alert-danger" path="password"/>
+                                        <br/><form:errors class="alert alert-danger" path="prePassword"/>
                                     </td>
                                 </tr>
                             </table>
                             <form:button class="btn btn-lg btn-success btn-mini"
-                                         type="submit">Join Bon Voyage!</form:button>
+                                         type="submit"><spring:message code="Button.signup"/></form:button>
                         </fieldset>
                     </form:form>
                 </div>

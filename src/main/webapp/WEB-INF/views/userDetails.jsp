@@ -11,7 +11,7 @@
 <section>
     <div class="jumbotron">
         <div class="container">
-            <h1>Congratulations! You are now a member of our community!</h1> <%--<spring:message code="${login.mainLine}"/>--%>
+            <h1>Congratulations! You are now a member of our community!</h1>
         </div>
     </div>
 </section>
@@ -20,7 +20,7 @@
         <div class="col-md-4 col-md-offset-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h5 class="panel-title">Here are your membership data:</h5><%--<spring:message code="${login.pleaseSignin}"/>--%>
+                    <h5 class="panel-title">Here are your membership data:</h5>
                 </div>
                 <div class="btn btn-info logout">
                     <h3>

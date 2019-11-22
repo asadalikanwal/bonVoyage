@@ -24,7 +24,6 @@ public class Phone implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-//	@Column(name="Id", nullable = false, updatable = false)
 	private Long id;
 	
 	@Column(name="Area")

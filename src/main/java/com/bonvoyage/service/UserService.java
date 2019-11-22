@@ -1,4 +1,11 @@
 package com.bonvoyage.service;
+/**
+ * @author Aser Ahmad
+ * @author aaahmad@mum.edu
+ *  * @version 1.0
+ *  * @since 1.0
+ *
+ */
 
 import com.bonvoyage.domain.User;
 import com.bonvoyage.domain.UserRole;
