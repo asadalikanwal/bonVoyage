@@ -17,7 +17,14 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.security.Principal;
-
+/**
+ * Class to hold address data.
+ *
+ * @author Ali M Ahmadi
+ * @author amahmadi@mum.edu
+ * @version 1.0
+ * @since 1.0
+ */
 @Controller
 public class DriverController {
 

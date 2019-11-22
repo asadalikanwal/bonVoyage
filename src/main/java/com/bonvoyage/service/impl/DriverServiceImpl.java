@@ -8,7 +8,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-
+/**
+ * Class to hold address data.
+ *
+ * @author Ali M Ahmadi
+ * @author amahmadi@mum.edu
+ * @version 1.0
+ * @since 1.0
+ */
 @Service
 @Transactional
 public class DriverServiceImpl implements DriverService {

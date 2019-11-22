@@ -9,7 +9,16 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Set;
 
+/**
+ * Class to hold address data.
+ *
+ * @author Ali M Ahmadi
+ * @author amahmadi@mum.edu
+ * @version 1.0
+ * @since 1.0
+ */
 @Entity
 public class Driver implements Serializable {
 
@@ -39,6 +48,10 @@ public class Driver implements Serializable {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "car_id")
     private Car car;
+
+    @OneToMany
+    @JoinColumn(name = "driver_id")
+    private Set<Trip> trips;
 
 
     public Driver() {
@@ -112,5 +125,13 @@ public class Driver implements Serializable {
 
     public void setUserID(Long userId) {
         this.user.setId(userId);
+    }
+
+    public Set<Trip> getTrips() {
+        return trips;
+    }
+
+    public void setTrips(Set<Trip> trips) {
+        this.trips = trips;
     }
 }
