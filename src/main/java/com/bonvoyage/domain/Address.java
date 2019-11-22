@@ -29,7 +29,6 @@ public class Address implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-//    @Column(name = "Address_Id", updatable = false, nullable = false)
     private Long id;
 
     @Column(name = "Door")

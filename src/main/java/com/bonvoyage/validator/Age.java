@@ -1,5 +1,5 @@
 package com.bonvoyage.validator;
-/** Custom annotation to make sure the entered age is within the minimum legal age.
+/** Custom annotation to make sure the entered age is not less than the minimum allowable age.
  * 
  * @author Aser Ahmad
  * @author aaahmad@mum.edu

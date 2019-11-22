@@ -17,7 +17,14 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.security.Principal;
-
+/**
+ * Class to hold address data.
+ *
+ * @author Ali M Ahmadi
+ * @author amahmadi@mum.edu
+ * @version 1.0
+ * @since 1.0
+ */
 @Controller
 public class DriverController {
 
@@ -31,15 +38,14 @@ public class DriverController {
     UserService userService;
 
 
-
     @RequestMapping(value = "/registerDriver", method = RequestMethod.GET)
-    public String registerDriver(@ModelAttribute("newDriver") Driver newDriver){
+    public String registerDriver(@ModelAttribute("newDriver") Driver newDriver) {
         return "/driverRegistration";
     }
 
     @RequestMapping(value = "/registerDriver", method = RequestMethod.POST)
-    public String saveDriver(@Valid @ModelAttribute("newDriver") Driver newDriver, BindingResult result, RedirectAttributes redirectAttributes, Principal principal){
-        if(result.hasErrors()){
+    public String saveDriver(@Valid @ModelAttribute("newDriver") Driver newDriver, BindingResult result, RedirectAttributes redirectAttributes, Principal principal) {
+        if (result.hasErrors()) {
             return "/driverRegistration";
         }
 //        Object obj = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -48,12 +54,12 @@ public class DriverController {
         newDriver.setUser(user);
         driverService.save(newDriver);
 
-        redirectAttributes.addFlashAttribute("newDriver",newDriver);
+        redirectAttributes.addFlashAttribute("newDriver", newDriver);
         return "redirect:/driverRegistered";
     }
 
     @RequestMapping(value = "/driverRegistered", method = RequestMethod.GET)
-    public String showSuccessRegistration(){
+    public String showSuccessRegistration() {
 
         return "/driverRegistered";
     }

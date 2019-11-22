@@ -11,7 +11,7 @@
 <section>
     <div class="jumbotron">
         <div class="container">
-            <h1>Congratulations! You are now a member of our community!</h1> <%--<spring:message code="${login.mainLine}"/>--%>
+            <h1>Congratulations! You are now a member of our community!</h1>
         </div>
     </div>
 </section>
@@ -20,17 +20,18 @@
         <div class="col-md-4 col-md-offset-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Here are your main membership data</h3><%--<spring:message code="${login.pleaseSignin}"/>--%>
+                    <h5 class="panel-title">Here are your membership data:</h5>
                 </div>
-                <div class="panel-body">
-                    <div class="form-group">
+                <div class="btn btn-info logout">
+                    <h3>
                         <label id="name">Name: ${savedUser.firstName} ${savedUser.lastName}</label>
-                    </div>
-                    <div class="form-group">
+                    </h3>
+                    <h3>
                         <label id="savedUser.username">Username: ${savedUser.username}</label>
-                    </div>
-                    <a href="../welcome" class="btn btn-lg btn-success btn-mini">Start looking for trips</a> |
-                    <a href="<spring:url value='/updateUser/${savedUser.username}'/>" class="btn btn-lg btn-success btn-mini">Change my data</a>
+                    </h3>
+                </div>
+                <div class="panel-heading">
+                    <h5 class="panel-title">Please wait until an admin approves your membership request.</h5><%--<spring:message code="${login.pleaseSignin}"/>--%>
                 </div>
             </div>
         </div>

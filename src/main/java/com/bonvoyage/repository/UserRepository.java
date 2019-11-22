@@ -1,5 +1,11 @@
 package com.bonvoyage.repository;
-
+/**
+ * @author Aser Ahmad
+ * @author aaahmad@mum.edu
+ *  * @version 1.0
+ *  * @since 1.0
+ *
+ */
 import com.bonvoyage.domain.User;
 import com.bonvoyage.domain.UserRole;
 import org.springframework.data.jpa.repository.Query;

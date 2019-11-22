@@ -9,9 +9,18 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Set;
 
+/**
+ * Class to hold address data.
+ *
+ * @author Ali M Ahmadi
+ * @author amahmadi@mum.edu
+ * @version 1.0
+ * @since 1.0
+ */
 @Entity
-public class Driver implements Serializable{
+public class Driver implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -19,16 +28,16 @@ public class Driver implements Serializable{
     private long id;
 
     @NotBlank
-    @Size(min =9, max = 9, message ="{Size.licenseNo.validation}")
+    @Size(min = 9, max = 9, message = "{Size.licenseNo.validation}")
     private String drivingLicenseNo;
 
     @NotNull
-    @DateTimeFormat(pattern= "MM-dd-yyyy")
+    @DateTimeFormat(pattern = "MM-dd-yyyy")
     private LocalDate drivingExpirationDate;
 
     private boolean isDriverApproved;
 
-    @DateTimeFormat(pattern= "MM-dd-yyyy")
+    @DateTimeFormat(pattern = "MM-dd-yyyy")
     private LocalDate driverApprovalDate;
 
     @OneToOne
@@ -40,10 +49,13 @@ public class Driver implements Serializable{
     @JoinColumn(name = "car_id")
     private Car car;
 
+    @OneToMany
+    @JoinColumn(name = "driver_id")
+    private Set<Trip> trips;
 
 
-
-    public Driver(){}
+    public Driver() {
+    }
 
     public Driver(String drivingLicenseNo, LocalDate drivingExpirationDate) {
         this.drivingLicenseNo = drivingLicenseNo;
@@ -113,5 +125,13 @@ public class Driver implements Serializable{
 
     public void setUserID(Long userId) {
         this.user.setId(userId);
+    }
+
+    public Set<Trip> getTrips() {
+        return trips;
+    }
+
+    public void setTrips(Set<Trip> trips) {
+        this.trips = trips;
     }
 }

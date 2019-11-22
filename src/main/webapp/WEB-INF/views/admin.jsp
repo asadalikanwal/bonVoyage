@@ -15,9 +15,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-        <script src="../resources/js/admin.js"></script>
+    <script src="../resources/js/admin.js"></script>
     <style>
-        .tab-pane {padding-top: 10px; padding-bottom: 10px;}
+        .tab-pane {
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
     </style>
 </head>
 
@@ -35,10 +38,12 @@
 
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" id="rider-tab" data-toggle="tab" href="#rider" role="tab" aria-controls="rider" aria-selected="true">Pending Rider</a>
+                        <a class="nav-link active" id="rider-tab" data-toggle="tab" href="#rider" role="tab"
+                           aria-controls="rider" aria-selected="true">Pending Rider</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="driver-tab" data-toggle="tab" href="#driver" role="tab" aria-controls="driver" aria-selected="false">Pending Driver</a>
+                        <a class="nav-link" id="driver-tab" data-toggle="tab" href="#driver" role="tab"
+                           aria-controls="driver" aria-selected="false">Pending Driver</a>
                     </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
@@ -68,7 +73,8 @@
                                                 <p><strong>Last name:</strong> ${user.lastName}</p>
                                                 <p><strong>Email:</strong> ${user.email}</p>
 
-                                                <a class="btn btn-success approve" data-userid="${user.id}" style="color: #fff">Approve
+                                                <a class="btn btn-success approve" data-userid="${user.id}"
+                                                   style="color: #fff">Approve
                                                 </a>
                                                 <button type="button" class="btn btn-link" data-toggle="collapse"
                                                         data-target="#collapseOne-${user.id}">Close

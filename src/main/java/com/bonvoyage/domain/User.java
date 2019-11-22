@@ -2,6 +2,7 @@ package com.bonvoyage.domain;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Set;
 
 import javax.persistence.*;
 import javax.validation.Valid;
@@ -11,10 +12,14 @@ import javax.validation.constraints.Size;
 import com.bonvoyage.validator.UniqueUsername;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.multipart.MultipartFile;
 import com.bonvoyage.validator.Age;
 import com.bonvoyage.validator.Password;
+
 
 /**
  * Class to hold and map user data at sign up and update. It is composed of two classes:
@@ -27,9 +32,9 @@ import com.bonvoyage.validator.Password;
  */
 @Entity
 public class User implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-//    @Column(name = "User_Id", updatable = false, nullable = false)
     private Long id;
 
     @Column(name = "First_Name")
@@ -52,8 +57,10 @@ public class User implements Serializable {
     @Email(message = "{Email}")
     private String email;
 
-    @Transient
-    private MultipartFile photo;
+//    @Transient
+//    @Lob
+//    @NotNull(message="{NotNull}")
+//    private MultipartFile photo;
 
     @Valid
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -65,17 +72,33 @@ public class User implements Serializable {
     @JoinColumn(name = "Address_Id")
     private Address address;
 
+    public IdDocument getIdDocument() {
+        return idDocument;
+    }
+
+    public void setIdDocument(IdDocument idDocument) {
+        this.idDocument = idDocument;
+    }
+
+    @Valid
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name="IdDocument_Id")
+    private IdDocument idDocument;
+
     @Column(name = "Username", nullable = false, unique = true)
     @NotNull(message = "{NotNull}")
-//    @UniqueUsername(message = "{Unique.username}")
+    @UniqueUsername(message = "{Unique.username}")
     @Size(min = 8, max = 20, message = "{Size.range}")
     private String username;
 
     @Column(name = "Password", nullable = false)
-    @NotNull(message = "{NotNull}")
-    @Size(min = 8, message = "{Size.min}")
-    @Password(message = "{Password}")
     private String password;
+
+    @Transient
+    @NotNull(message = "{NotNull}")
+    @Size(min = 8, max = 20, message = "{Size.range}")
+    @Password(message = "{Password}")
+    private String prePassword;
 
     private boolean enabled;
 
@@ -88,6 +111,10 @@ public class User implements Serializable {
     @Column(name = "User_Role", columnDefinition = "varchar(20) default 'NONE'")
     @Enumerated(EnumType.STRING)
     private UserRole userRole;
+
+
+    @ManyToMany(mappedBy = "passengers")
+    private Set<Trip> trips;
 
     public Long getId() {
         return id;
@@ -129,13 +156,13 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public MultipartFile getPhoto() {
-        return photo;
-    }
+//    public MultipartFile getPhoto() {
+//        return photo;
+//    }
 
-    public void setPhoto(MultipartFile photo) {
-        this.photo = photo;
-    }
+//    public void setPhoto(MultipartFile photo) {
+//        this.photo = photo;
+//    }
 
     public Phone getPhoneNo() {
         return phoneNo;
@@ -169,6 +196,16 @@ public class User implements Serializable {
         this.password = password;
     }
 
+    public String getPrePassword() {
+        return prePassword;
+    }
+
+    public void setPrePassword(String prePassword) {
+        this.prePassword = prePassword;
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        this.setPassword(passwordEncoder.encode(prePassword));
+    }
+
     public boolean isEnabled() {
         return enabled;
     }
@@ -199,5 +236,13 @@ public class User implements Serializable {
 
     public void setNoOfRatings(long noOfRatings) {
         this.noOfRatings = noOfRatings;
+    }
+
+    public Set<Trip> getTrip() {
+        return trips;
+    }
+
+    public void setTrip(Set<Trip> trips) {
+        this.trips = trips;
     }
 }

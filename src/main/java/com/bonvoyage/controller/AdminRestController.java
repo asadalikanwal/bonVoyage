@@ -29,14 +29,15 @@ public class AdminRestController {
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public User addItem(@PathVariable String userId) {
         System.out.println("UUserRoleser Update from Admin controller ________");
+//        System.out.println("User Update from Admin controller ________");
         Long id = Long.parseLong(userId);
         User user = userService.findUserById(id);
-        if(user == null) {
+        if (user == null) {
             throw new IllegalArgumentException(new UserNotFoundException(userId, null));
         }
-        System.out.println("Got the user _____________ : " + user.getUserRole());
+//        System.out.println("Got the user _____________ : " + user.getUserRole());
         user.setUserRole(UserRole.ROLE_RIDER);
-        System.out.println("Got the user _____________ : " + user.getUserRole());
+//        System.out.println("Got the user _____________ : " + user.getUserRole());
         userService.saveUser(user);
         return user;
     }
@@ -45,15 +46,15 @@ public class AdminRestController {
     @RequestMapping(value = "/updateDriver/{userId}", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public Driver addDriver(@PathVariable String userId) {
-        System.out.println("User Update from Admin controller ________");
+//        System.out.println("User Update from Admin controller ________");
         Long id = Long.parseLong(userId);
         Driver driver = driverService.findOne(id);
-        if(driver == null) {
+        if (driver == null) {
             throw new IllegalArgumentException(new UserNotFoundException(userId, null));
         }
-        System.out.println("Got the user _____________ : " + driver.isDriverApproved());
+//        System.out.println("Got the user _____________ : " + driver.isDriverApproved());
         driver.setDriverApproved(true);
-        System.out.println("Got the user _____________ : " + driver.isDriverApproved());
+//        System.out.println("Got the user _____________ : " + driver.isDriverApproved());
         driverService.save(driver);
 
 //        User user = userService.findUserById(driver.getUserID());

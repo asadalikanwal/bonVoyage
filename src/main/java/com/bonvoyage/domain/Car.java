@@ -9,7 +9,14 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
-
+/**
+ * Class to hold address data.
+ *
+ * @author Ali M Ahmadi
+ * @author amahmadi@mum.edu
+ * @version 1.0
+ * @since 1.0
+ */
 @Entity
 public class Car implements Serializable {
     private static final long serialVersionUID = 1L;
