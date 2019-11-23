@@ -20,8 +20,7 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><spring:message code="signup.pleaseSignin"/>
-                        up</h3>
+                    <h3 class="panel-title"><spring:message code="signup.pleaseSignin"/></h3>
                 </div>
                 <div class="panel-body">
                     <spring:url value="/users/signup" var="action"/>

@@ -9,6 +9,13 @@
     </a>
 </li>
 <li>
+    <a href="<spring:url value="/about" />">
+        <button type="button" class="btn btn-info">
+            ABOUT AAAJ
+        </button>
+    </a>
+</li>
+<li>
     <security:authorize access="hasRole('ADMIN')">
         <a class="btn btn-info" href="<spring:url value="/admin/approval" />">
             USER APPROVAL
