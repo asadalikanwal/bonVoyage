@@ -32,7 +32,7 @@
     <div class="panel-body">
         <div class="form:input-large">
             <a href="mailto:amahmadi@mum.edu">Ali Mohammad Ahmadi</a>, <spring:message code="Id"/>: 610105<br/>
-            <a href="mailto:aakanwal@mum.edu">Asad Ali Kanwal</a>, <spring:message code="Id"/>: <br/>
+            <a href="mailto:aakanwal@mum.edu">Asad Ali Kanwal</a>, <spring:message code="Id"/>: 610147<br/>
             <a href="mailto:aaahmad@mum.edu">Aser Ahmad Ibrahim Ahmad</a>, <spring:message code="Id"/>: 610086<br/>
             <a href="mailto:jsvallon@mum.edu">John Styves Vallon</a>, <spring:message code="Id"/>: 610087
         </div>
