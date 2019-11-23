@@ -71,8 +71,6 @@
 
             <form:form modelAttribute="searchTrip" action="search_Trip" method="post" class="form-inline">
 
-
-
                 <div class="form-group mb-2">
                     <span class="glyphicon glyphicon-map-marker"></span>
                     <form:input path="origin_search" type="text" class="form-control" id="origin_search" placeholder="Origin"/>
@@ -95,6 +93,10 @@
 
     <div style="margin-top:10px;"></div>
 
+    <div id="map" style="height: 300px;">
+    </div>
+
+    <div style="margin-top:10px;"></div>
 
     <c:forEach items="${listLastTentrip}" var="trips">
         <spring:url value="/joinTrip" var="joinTrip">
@@ -112,9 +114,7 @@
     </c:forEach>
 
 
-    <div id="map" style="height: 300px;">
-    </div>
-    <div style="margin-top:10px;"></div>
+
 
     <p id="from_js"></p>
 

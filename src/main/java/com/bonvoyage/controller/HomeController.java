@@ -114,10 +114,6 @@ public class HomeController {
 
 
 
-	@RequestMapping(value="/updateTrip",method = RequestMethod.PATCH)
-    public @ResponseBody Trip updateTrip(Trip trip){
-	    return trip;
-    }
 
 
 
