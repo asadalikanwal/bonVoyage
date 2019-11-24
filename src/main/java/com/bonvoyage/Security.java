@@ -71,6 +71,7 @@ public class Security extends WebSecurityConfigurerAdapter
 				.authorizeRequests()
 				.antMatchers( "/addTrip" ).hasAnyRole("ADMIN","DRIVER")
 				.antMatchers( "/admin/approval" ).hasRole( "ADMIN" )
+				.antMatchers("/update*/**").hasRole("ADMIN")
 				.antMatchers( "/joinTrip/**" ).hasAnyRole( "ADMIN","RIDER", "DRIVER" )
 				.antMatchers("/registerDriver").hasAnyRole("ADMIN","RIDER")
 				.anyRequest().permitAll()

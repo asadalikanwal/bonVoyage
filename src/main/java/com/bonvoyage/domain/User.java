@@ -245,4 +245,5 @@ public class User implements Serializable {
     public void setTrip(Set<Trip> trips) {
         this.trips = trips;
     }
+
 }

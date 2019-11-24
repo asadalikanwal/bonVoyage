@@ -14,7 +14,7 @@ $(document).ready(function () {
         $.ajax({
             url: contextRoot + "/rest/updateUser/" + userID,
             type: 'GET',
-            dataType: "json",
+            contentType: 'application/json',
             success: function (response) {
                 // alert("Product Successfully added to the Cart!");
                 $(".card-" + userID).slideUp();

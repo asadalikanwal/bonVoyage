@@ -101,4 +101,5 @@ public class Address implements Serializable {
     public void setZipCode(ZipCode zipCode) {
         this.zipCode = zipCode;
     }
+
 }

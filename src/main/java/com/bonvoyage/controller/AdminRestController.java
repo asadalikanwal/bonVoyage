@@ -27,8 +27,8 @@ public class AdminRestController {
 
     @RequestMapping(value = "/updateUser/{userId}", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public User addItem(@PathVariable String userId) {
-        System.out.println("______UUserRoleser Update from Admin controller ________");
+    public @ResponseBody User addItem(@PathVariable String userId) {
+        System.out.println("______UserRole Update from Admin controller ________");
         System.out.println("_______User Update from Admin controller ________");
         Long id = Long.parseLong(userId);
         User user = userService.findUserById(id);
@@ -47,7 +47,7 @@ public class AdminRestController {
 
     @RequestMapping(value = "/updateDriver/{userId}", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public Driver addDriver(@PathVariable String userId) {
+    public @ResponseBody Driver addDriver(@PathVariable String userId) {
 //        System.out.println("User Update from Admin controller ________");
         Long id = Long.parseLong(userId);
         Driver driver = driverService.findOne(id);

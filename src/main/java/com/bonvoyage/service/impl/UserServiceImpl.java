@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @PreAuthorize("hasAnyRole('ADMIN', 'DRIVER', 'RIDER', 'NONE')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'DRIVER', 'RIDER', 'NONE')")
     public User findUserById(Long id) {
         return userRepository.findOne(id);
     }

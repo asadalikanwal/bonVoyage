@@ -134,4 +134,5 @@ public class Driver implements Serializable {
     public void setTrips(Set<Trip> trips) {
         this.trips = trips;
     }
+
 }

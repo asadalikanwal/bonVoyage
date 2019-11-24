@@ -38,15 +38,15 @@ public class AdminController {
         return "/admin";
     }
 
-    @PostMapping(value = "/approval")
-    public String createUser(@Valid @ModelAttribute("user") User user, BindingResult result, RedirectAttributes redirectAttributes) {
-        if (result.hasErrors())
-            return "approval";
-
-//        userService.saveUser(userToCreate);
-//        redirectAttributes.addFlashAttribute("savedUser", userToCreate);
-        return "admin";
-    }
+//    @PostMapping(value = "/approval")
+//    public String createUser(@Valid @ModelAttribute("user") User user, BindingResult result, RedirectAttributes redirectAttributes) {
+//        if (result.hasErrors())
+//            return "approval";
+//
+////        userService.saveUser(userToCreate);
+////        redirectAttributes.addFlashAttribute("savedUser", userToCreate);
+//        return "admin";
+//    }
 
     //    @ResponseStatus(value = HttpStatus.NO_CONTENT)
 

@@ -85,4 +85,5 @@ public class IdDocument implements Serializable {
     public void setDocumentImage(MultipartFile documentImage) {
         this.documentImage = documentImage;
     }
+
 }

@@ -68,4 +68,5 @@ public class Phone implements Serializable {
 	public void setNumber(int number) {
 		this.number = number;
 	}
+
 }
