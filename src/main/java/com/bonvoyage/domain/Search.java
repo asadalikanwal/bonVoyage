@@ -3,7 +3,9 @@ package com.bonvoyage.domain;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-public class Search {
+import java.io.Serializable;
+
+public class Search implements Serializable {
 
 
     @NotEmpty(message="{Search.origin}")

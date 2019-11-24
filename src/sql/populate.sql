@@ -2,43 +2,47 @@
 -- Dumping data for table `Phone`
 --
 
-INSERT INTO `Phone` VALUES (5,111,1111,111),(10,111,1111,111),(15,111,1111,111);
+INSERT INTO `Phone`(id, Area, Number, Prefix) VALUES (5,111,1111,111),(10,111,1111,111),(15,111,1111,111);
 
 --
 -- Dumping data for table `ZipCode`
 --
 
-INSERT INTO `ZipCode` VALUES (3,52557,0),(8,52557,0),(13,52557,0);
+INSERT INTO `ZipCode`(id, Basic_Code, Plus_four) VALUES (3,52557,0),(8,52557,0),(13,52557,0);
 
 --
 -- Dumping data for table `address`
 --
 
-INSERT INTO `address` VALUES (2,'Fairfield','IO','1000 N 4th',NULL,'',3),(7,'Fairfield','IO','1000 N 4th',NULL,'',8),(12,'Fairfield','IO','1000 N 4th',NULL,'',13);
+INSERT INTO `address`(id, City, State, Street, Door, ZipCode_Id) VALUES (2,'Fairfield','IO','1000 N 4th',30,3),(7,'Fairfield','IO','1000 N 4th',20,8),(12,'Fairfield','IO','1000 N 4th',20,13);
 
 --
 -- Dumping data for table `IdDocument`
 --
 
-INSERT INTO `IdDocument` VALUES (4,'as233444445','STATE_ID','11-11-2222'),(9,'12345678','STATE_ID','11-11-2222'),(14,'as233444445','STATE_ID','11-11-2222');
+INSERT INTO `IdDocument`(Id_Document_Id, Document_No, Document_Type, Valid_Through) VALUES (4,'as233444445','STATE_ID','2222-11-11'),(9,'12345678','STATE_ID','2222-11-11'),(14,'as233444445','STATE_ID','2222-11-11');
 
 --
 -- Dumping data for table `User`
+-- three users are created:
+-- ADMIN: un: admin123 / pw: admin!23
+-- RIDER: un: aserahmad / pw: admin!23
+-- NONE: un: ahmadibrahim / pw: admin!23
 --
 
-INSERT INTO `User` VALUES (1,0,'11-11-1980','aaahmad@mum.edu',true,'Aser','Ahmad',0,'$2a$10$GXHQroYIvo.s4J2nYUFuc.TpuOcrNgdmO4AfbBzI4fmqVBHsyeNEW','ROLE_ADMIN','admin123',2,4,5),(6,0,'11-11-1978','a@b.com',true,'Aser','Ahmad',0,'$2a$10$TxHVUaYg1o3Fofuc1U1kxOmsnt.j.IjxlBSDlSzhRaze1BgSW.xnG','ROLE_RIDER','aserahmad',7,9,10),(11,0,'11-11-1976','',true,'Ahmad','Ibrahim',0,'$2a$10$3c/UHMRmNb9czRlgnvsNEOag0NVQJaRMdUvAi8E.VyRXQpU6OhaUy','ROLE_NONE','ahmadibrahim',12,14,15);
+INSERT INTO `User`(id, Average_Rating, Birthdate, Email, enabled, First_Name, Last_Name, No_of_Ratings, Password, User_Role, Username, Address_Id, IDDocument_Id, Phone_Id) VALUES (1,0,'1980-11-11','aaahmad@mum.edu',true,'Aser','Ahmad',0,'$2a$10$GXHQroYIvo.s4J2nYUFuc.TpuOcrNgdmO4AfbBzI4fmqVBHsyeNEW','ROLE_ADMIN','admin123',2,4,5),(6,0,'1978-11-11','a@b.com',true,'Aser','Ahmad',0,'$2a$10$TxHVUaYg1o3Fofuc1U1kxOmsnt.j.IjxlBSDlSzhRaze1BgSW.xnG','ROLE_RIDER','aserahmad',7,9,10),(11,0,'1978-11-11','',true,'Ahmad','Ibrahim',0,'$2a$10$3c/UHMRmNb9czRlgnvsNEOag0NVQJaRMdUvAi8E.VyRXQpU6OhaUy','ROLE_NONE','ahmadibrahim',12,14,15);
 
 --
 -- Dumping data for table `Car`
 --
 
-INSERT INTO `car` VALUES (1,'Red',2008,'Toyota',4,'Camry','TX12345');
+INSERT INTO `car`(id, color, makeYear, manufacturer, maxNoOfPassengers, model, plateNo) VALUES (1,'Red',2008,'Toyota',4,'Camry','TX12345');
 
 --
 -- Dumping data for table `Driver`
 --
 
-INSERT INTO `driver` VALUES (1,NULL,'2022-01-01','6543AR123',true,1,1);
+INSERT INTO `driver`(id, driverApprovalDate, drivingExpirationDate, drivingLicenseNo, isDriverApproved, car_id, user_id) VALUES (1,NULL,'2022-01-01','6543AR123',false,1,6);
 
 --
 -- Dumping data for table `Trip`
