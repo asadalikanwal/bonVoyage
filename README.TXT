@@ -1,4 +1,9 @@
-Complete programmatic configuration. No web.xml, dispatcher-servlet.xml, 
+DB schema name: bonvoyage
+DB credentials for the Bon Voyage project:
+UN: aaaj
+PW: $aaaj?
+
+Complete programmatic configuration. No web.xml, dispatcher-servlet.xml,
 Security-context, applicationContext.
 See com.packt.webstore.configuration package for details.
 
